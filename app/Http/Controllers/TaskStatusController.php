@@ -22,7 +22,8 @@ class TaskStatusController extends Controller
      */
     public function create()
     {
-        //
+        $taskStatus = new TaskStatus();
+        return view("task_status.create", compact("taskStatus"));
     }
 
     /**
@@ -30,7 +31,12 @@ class TaskStatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->validate($request, ['required']);
+        $taskStatus = new TaskStatus();
+        $taskStatus->fill($data);
+        $taskStatus->save();
+
+        return redirect()->route('task_statuses.index')->with('success', 'Статус успешно создан');
     }
 
     /**
