@@ -12,5 +12,5 @@
 } ?>
 <?php unset($__defined_vars); ?>
 
-<input <?php echo e($disabled ? 'disabled' : ''); ?> <?php echo $attributes->merge(['class' => 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm']); ?>>
+<input <?php echo e($disabled ? 'disabled' : ''); ?> <?php echo $attributes->merge(['class' => 'border-gray-300 focus:border-blue-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm']); ?>>
 <?php /**PATH /home/neox56/php-project-57/resources/views/components/text-input.blade.php ENDPATH**/ ?>
