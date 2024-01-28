@@ -5,7 +5,7 @@
         <h1 class="mb-5">Статусы</h1>
         @auth
             <div>
-                <a href="https://php-task-manager-ru.hexlet.app/task_statuses/create"
+                <a href="{{ route('task_statuses.create') }}"
                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Создать статус
                 </a>
@@ -17,62 +17,29 @@
                 <th>ID</th>
                 <th>Имя</th>
                 <th>Дата создания</th>
-                <th>Действия</th>
+                @auth<th>Действия</th>@endauth
             </tr>
             </thead>
             <tbody>
-            <tr class="border-b border-dashed text-left">
-                <td>1</td>
-                <td>новая</td>
-                <td>16.11.2023</td>
-                <td>
-                    <a data-confirm="Вы уверены?" data-method="delete" class="text-red-600 hover:text-red-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/1">
-                        Удалить </a>
-                    <a class="text-blue-600 hover:text-blue-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/1/edit">
-                        Изменить </a>
-                </td>
-            </tr>
-            <tr class="border-b border-dashed text-left">
-                <td>2</td>
-                <td>завершена</td>
-                <td>16.11.2023</td>
-                <td>
-                    <a data-confirm="Вы уверены?" data-method="delete" class="text-red-600 hover:text-red-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/2">
-                        Удалить </a>
-                    <a class="text-blue-600 hover:text-blue-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/2/edit">
-                        Изменить </a>
-                </td>
-            </tr>
-            <tr class="border-b border-dashed text-left">
-                <td>3</td>
-                <td>выполняется</td>
-                <td>16.11.2023</td>
-                <td>
-                    <a data-confirm="Вы уверены?" data-method="delete" class="text-red-600 hover:text-red-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/3">
-                        Удалить </a>
-                    <a class="text-blue-600 hover:text-blue-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/3/edit">
-                        Изменить </a>
-                </td>
-            </tr>
-            <tr class="border-b border-dashed text-left">
-                <td>4</td>
-                <td>в архиве</td>
-                <td>16.11.2023</td>
-                <td>
-                    <a data-confirm="Вы уверены?" data-method="delete" class="text-red-600 hover:text-red-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/4">
-                        Удалить </a>
-                    <a class="text-blue-600 hover:text-blue-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/4/edit">
-                        Изменить </a>
-                </td>
-            </tr>
+            @foreach ($taskStatuses as $status)
+                <tr class="border-b border-dashed text-left">
+                    <td>{{ $status->id }}</td>
+                    <td>{{ $status->name }}</td>
+                    <td>{{ $status->created_at }}</td>
+                    @auth
+                        <td>
+                            <a data-confirm="Вы уверены?" data-method="delete" class="text-red-600 hover:text-red-900"
+                               href="https://php-task-manager-ru.hexlet.app/task_statuses/1">
+                                Удалить
+                            </a>
+                            <a class="text-blue-600 hover:text-blue-900"
+                               href="https://php-task-manager-ru.hexlet.app/task_statuses/1/edit">
+                                Изменить
+                            </a>
+                        </td>
+                    @endauth
+                </tr>
+            @endforeach
             </tbody>
         </table>
     </div>

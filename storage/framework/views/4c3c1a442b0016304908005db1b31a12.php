@@ -3,7 +3,7 @@
         <h1 class="mb-5">Статусы</h1>
         <?php if(auth()->guard()->check()): ?>
             <div>
-                <a href="https://php-task-manager-ru.hexlet.app/task_statuses/create"
+                <a href="<?php echo e(route('task_statuses.create')); ?>"
                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Создать статус
                 </a>
@@ -15,62 +15,29 @@
                 <th>ID</th>
                 <th>Имя</th>
                 <th>Дата создания</th>
-                <th>Действия</th>
+                <?php if(auth()->guard()->check()): ?><th>Действия</th><?php endif; ?>
             </tr>
             </thead>
             <tbody>
-            <tr class="border-b border-dashed text-left">
-                <td>1</td>
-                <td>новая</td>
-                <td>16.11.2023</td>
-                <td>
-                    <a data-confirm="Вы уверены?" data-method="delete" class="text-red-600 hover:text-red-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/1">
-                        Удалить </a>
-                    <a class="text-blue-600 hover:text-blue-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/1/edit">
-                        Изменить </a>
-                </td>
-            </tr>
-            <tr class="border-b border-dashed text-left">
-                <td>2</td>
-                <td>завершена</td>
-                <td>16.11.2023</td>
-                <td>
-                    <a data-confirm="Вы уверены?" data-method="delete" class="text-red-600 hover:text-red-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/2">
-                        Удалить </a>
-                    <a class="text-blue-600 hover:text-blue-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/2/edit">
-                        Изменить </a>
-                </td>
-            </tr>
-            <tr class="border-b border-dashed text-left">
-                <td>3</td>
-                <td>выполняется</td>
-                <td>16.11.2023</td>
-                <td>
-                    <a data-confirm="Вы уверены?" data-method="delete" class="text-red-600 hover:text-red-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/3">
-                        Удалить </a>
-                    <a class="text-blue-600 hover:text-blue-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/3/edit">
-                        Изменить </a>
-                </td>
-            </tr>
-            <tr class="border-b border-dashed text-left">
-                <td>4</td>
-                <td>в архиве</td>
-                <td>16.11.2023</td>
-                <td>
-                    <a data-confirm="Вы уверены?" data-method="delete" class="text-red-600 hover:text-red-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/4">
-                        Удалить </a>
-                    <a class="text-blue-600 hover:text-blue-900"
-                       href="https://php-task-manager-ru.hexlet.app/task_statuses/4/edit">
-                        Изменить </a>
-                </td>
-            </tr>
+            <?php $__currentLoopData = $taskStatuses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $status): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <tr class="border-b border-dashed text-left">
+                    <td><?php echo e($status->id); ?></td>
+                    <td><?php echo e($status->name); ?></td>
+                    <td><?php echo e($status->created_at); ?></td>
+                    <?php if(auth()->guard()->check()): ?>
+                        <td>
+                            <a data-confirm="Вы уверены?" data-method="delete" class="text-red-600 hover:text-red-900"
+                               href="https://php-task-manager-ru.hexlet.app/task_statuses/1">
+                                Удалить
+                            </a>
+                            <a class="text-blue-600 hover:text-blue-900"
+                               href="https://php-task-manager-ru.hexlet.app/task_statuses/1/edit">
+                                Изменить
+                            </a>
+                        </td>
+                    <?php endif; ?>
+                </tr>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
         </table>
     </div>
