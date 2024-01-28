@@ -155,9 +155,6 @@
             <?php if(Route::has('password.request')): ?>
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                    href="<?php echo e(route('password.request')); ?>">
-                    <?php echo e(__('Забыли пароль?')); ?>
-
-                </a>
             <?php endif; ?>
 
             <?php if (isset($component)) { $__componentOriginald411d1792bd6cc877d687758b753742c = $component; } ?>
