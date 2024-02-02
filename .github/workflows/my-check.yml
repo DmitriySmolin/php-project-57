@@ -20,7 +20,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
           XDEBUG_MODE: coverage
-        with:
+#        with:
 #          coverageCommand: make test-coverage
 #          coverageLocations: ${{github.workplace}}/build/logs/clover.xml:clover
-          debug: true
+#          debug: true
