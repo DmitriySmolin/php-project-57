@@ -15,7 +15,7 @@ jobs:
       - run: make install
       - run: make lint
 #      - name: Run test & publish code coverage
-        uses: paambaati/codeclimate-action@v2.6.0
+#        uses: paambaati/codeclimate-action@v2.6.0
         # Add Code Climate secret key
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
