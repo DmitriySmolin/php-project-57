@@ -14,7 +14,7 @@
         <table class="mt-4">
             <thead class="border-b-2 border-solid border-black text-left">
             <tr>
-                <th>{{ __('views.task_status.index.id') }}<</th>
+                <th>{{ __('views.task_status.index.id') }}</th>
                 <th>{{ __('views.task_status.index.name') }}</th>
                 <th>{{ __('views.task_status.index.created_at') }}</th>
                 @auth<th>{{ __('views.task_status.index.actions') }}</th>@endauth
@@ -25,7 +25,7 @@
                 <tr class="border-b border-dashed text-left">
                     <td>{{ $status->id }}</td>
                     <td>{{ $status->name }}</td>
-                    <td>{{ $status->created_at }}</td>
+                    <td>{{ $status->created_at->format('d.m.Y') }}</td>
                     @auth
                         <td>
                             <a data-confirm="__('views.task_status.index.delete_confirm')" data-method="delete" class="text-red-600 hover:text-red-900"
