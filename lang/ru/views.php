@@ -13,4 +13,16 @@ return [
         "log_in"=> "Войти",
         "email_password_reset_link"=> "Сбросить пароль",
     ],
+    "task_status" => [
+        "index" => [
+            "header" => "Статусы",
+            "create"=> "Создать статус",
+            "id"=> "ID",
+            "name"=> "Имя",
+            "created_at"=> "Дата создания",
+            "actions"=> "Действия",
+            'delete' => 'Удалить',
+            'update' => 'Изменить',
+        ],
+    ],
 ];
