@@ -30,7 +30,9 @@ class TaskStatusController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $this->validate($request, ['required']);
+        $data = $request->validate([
+            'name' => 'required',
+        ]);
         $taskStatus = new TaskStatus();
         $taskStatus->fill($data);
         $taskStatus->save();
