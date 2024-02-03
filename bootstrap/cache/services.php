@@ -28,18 +28,19 @@
     24 => 'Laravel\\Sail\\SailServiceProvider',
     25 => 'Laravel\\Sanctum\\SanctumServiceProvider',
     26 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    27 => 'Carbon\\Laravel\\ServiceProvider',
-    28 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    29 => 'Termwind\\Laravel\\TermwindServiceProvider',
-    30 => 'Sentry\\Laravel\\ServiceProvider',
-    31 => 'Sentry\\Laravel\\Tracing\\ServiceProvider',
-    32 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
-    33 => 'App\\Providers\\AppServiceProvider',
-    34 => 'App\\Providers\\AuthServiceProvider',
-    35 => 'App\\Providers\\EventServiceProvider',
-    36 => 'App\\Providers\\RouteServiceProvider',
-    37 => 'Sentry\\Laravel\\ServiceProvider',
-    38 => 'Laracasts\\Flash\\FlashServiceProvider',
+    27 => 'Collective\\Html\\HtmlServiceProvider',
+    28 => 'Carbon\\Laravel\\ServiceProvider',
+    29 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    30 => 'Termwind\\Laravel\\TermwindServiceProvider',
+    31 => 'Sentry\\Laravel\\ServiceProvider',
+    32 => 'Sentry\\Laravel\\Tracing\\ServiceProvider',
+    33 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
+    34 => 'App\\Providers\\AppServiceProvider',
+    35 => 'App\\Providers\\AuthServiceProvider',
+    36 => 'App\\Providers\\EventServiceProvider',
+    37 => 'App\\Providers\\RouteServiceProvider',
+    38 => 'Sentry\\Laravel\\ServiceProvider',
+    39 => 'Laracasts\\Flash\\FlashServiceProvider',
   ),
   'eager' => 
   array (
@@ -212,6 +213,10 @@
     'Laravel\\Sail\\Console\\InstallCommand' => 'Laravel\\Sail\\SailServiceProvider',
     'Laravel\\Sail\\Console\\PublishCommand' => 'Laravel\\Sail\\SailServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
+    'html' => 'Collective\\Html\\HtmlServiceProvider',
+    'form' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
   ),
   'when' => 
   array (
@@ -258,6 +263,9 @@
     array (
     ),
     'Laravel\\Tinker\\TinkerServiceProvider' => 
+    array (
+    ),
+    'Collective\\Html\\HtmlServiceProvider' => 
     array (
     ),
   ),
