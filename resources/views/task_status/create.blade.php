@@ -8,6 +8,9 @@
             <div class="flex flex-col">
                 <div>
                     {{ Form::label('name', __('views.task_status.create.label')) }}
+                    @error('name')
+                    <div class="text-rose-600">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mt-2">
                     {{ Form::text('name', null, ['class' => 'rounded border-gray-300 w-1/3']) }}
