@@ -2,8 +2,10 @@
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
         <!--Title-->
         <a href="<?php echo e(route('home')); ?>" class="flex items-center">
-            <span
-                class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"><?php echo e(config('app.name', 'Менеджер задач')); ?></span>
+          <span
+              class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"><?php echo e(__('header.app_name')); ?>
+
+          </span>
         </a>
 
         <!--Buttons-->
@@ -13,20 +15,22 @@
                    onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();"
                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">
-                    Выход
+                    <?php echo e(__('header.logout')); ?>
+
                 </a>
-                <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
-                      style="display: none;">
+                <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
                     <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
                 </form>
             <?php else: ?>
                 <a href="<?php echo e(route('login')); ?>"
                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Вход
+                    <?php echo e(__('header.login')); ?>
+
                 </a>
                 <a href="<?php echo e(route('register')); ?>"
                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">
-                    Регистрация
+                    <?php echo e(__('header.register')); ?>
+
                 </a>
             <?php endif; ?>
         </div>
@@ -37,19 +41,22 @@
                 <li>
                     <a href="<?php echo e(route('task_statuses.index')); ?>"
                        class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0">
-                        Задачи
+                        <?php echo e(__('header.tasks')); ?>
+
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo e(route('task_statuses.index')); ?>"
                        class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0">
-                        Статусы
+                        <?php echo e(__('header.statuses')); ?>
+
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo e(route('task_statuses.index')); ?>"
                        class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0">
-                        Метки
+                        <?php echo e(__('header.labels')); ?>
+
                     </a>
                 </li>
             </ul>
