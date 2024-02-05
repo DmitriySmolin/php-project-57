@@ -30,6 +30,9 @@ class TaskStatusControllerTest extends TestCase
 
     public function testCreate(): void
     {
+        $response = $this->get(route('task_statuses.create'));
+        $response->assertForbidden();
+
         $response = $this->actingAs($this->user)->get(route('task_statuses.create'));
         $response->assertOk();
     }
