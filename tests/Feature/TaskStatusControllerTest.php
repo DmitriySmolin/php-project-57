@@ -40,6 +40,8 @@ class TaskStatusControllerTest extends TestCase
     public function testEdit(): void
     {
         $taskStatus = TaskStatus::factory()->create();
+        $response = $this->get(route('task_statuses.edit', $taskStatus));
+        $response->assertForbidden();
         $response = $this->actingAs($this->user)->get(route('task_statuses.edit', $taskStatus));
         $response->assertOk();
     }
