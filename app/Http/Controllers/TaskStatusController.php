@@ -25,8 +25,7 @@ class TaskStatusController extends Controller
         if (!Auth::check()) {
             abort(403, __('auth.forbidden'));
         }
-        $taskStatus = new TaskStatus();
-        return view("task_status.create", compact("taskStatus"));
+        return view('task_status.create');
     }
 
     /**
@@ -38,7 +37,11 @@ class TaskStatusController extends Controller
             abort(419);
         }
         $data = $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:task_statuses|max:255',
+        ], [
+            'name.unique' => __('validation.unique_name'),
+        ], [
+            'name' => __('validation.attributes.status')
         ]);
         $taskStatus = new TaskStatus();
         $taskStatus->fill($data);
@@ -79,7 +82,7 @@ class TaskStatusController extends Controller
         }
 
         $data = $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:task_statuses',
         ]);
 
         $taskStatus->fill($data);
