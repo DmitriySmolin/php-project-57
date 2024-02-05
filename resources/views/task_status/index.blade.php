@@ -30,7 +30,7 @@
                     <td>{{ $status->created_at->format('d.m.Y') }}</td>
                     @auth
                         <td>
-                            <a data-confirm="__('views.task_status.index.delete_confirm')" data-method="delete"
+                            <a data-confirm="{{ __('views.task_status.index.delete_confirm') }}" data-method="delete"
                                class="text-red-600 hover:text-red-900"
                                href="{{ route('task_statuses.destroy', $status->id) }}">
                                 {{ __('views.task_status.index.delete') }}

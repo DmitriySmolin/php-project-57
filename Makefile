@@ -2,6 +2,9 @@ start:
 	php artisan serve
 install:
 	composer install
+	php artisan key:gen --ansi
+	npm ci
+	npm run build
 validate:
 	composer validate
 lint:
@@ -14,7 +17,8 @@ test-coverage:
 	XDEBUG_MODE=coverage composer exec --verbose phpunit tests -- --coverage-clover build/logs/clover.xml
 stan:
 	composer exec --verbose phpstan analyze app bootstrap config database public routes tests
-
+build-frontend:
+	npm run dev
 
 
 
