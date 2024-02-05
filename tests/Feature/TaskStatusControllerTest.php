@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 use App\Models\{
     User,
@@ -31,10 +30,6 @@ class TaskStatusControllerTest extends TestCase
 
     public function testCreate(): void
     {
-        if (!Auth::check()) {
-            abort(403, __('auth.forbidden'));
-        }
-
         $response = $this->get(route('task_statuses.create'));
         $response->assertForbidden();
 
