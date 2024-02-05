@@ -60,6 +60,9 @@ class TaskStatusControllerTest extends TestCase
     {
         $taskStatus = TaskStatus::factory()->create();
         $data = TaskStatus::factory()->make()->only('name');
+        $response = $this->patch(route('task_statuses.update', $taskStatus), (array) $data);
+        $response->assertStatus(419);
+        $this->assertDatabaseMissing('task_statuses', (array) $data);
         $response = $this->actingAs($this->user)->patch(route('task_statuses.update', $taskStatus), (array) $data);
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
