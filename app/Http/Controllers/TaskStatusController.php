@@ -74,7 +74,20 @@ class TaskStatusController extends Controller
      */
     public function update(Request $request, TaskStatus $taskStatus)
     {
-        //
+        if (!Auth::check()) {
+            abort(419);
+        }
+
+        $data = $request->validate([
+            'name' => 'required',
+        ]);
+
+        $taskStatus->fill($data);
+        $taskStatus->save();
+
+        flash(__('flash.task_statuses.update.success'))->success();
+
+        return redirect()->route('task_statuses.index');
     }
 
     /**
