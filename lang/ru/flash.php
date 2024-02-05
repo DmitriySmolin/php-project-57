@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'statuses' => [
+    'task_statuses' => [
         'store' => [
             'success' => 'Статус успешно создан',
         ],
