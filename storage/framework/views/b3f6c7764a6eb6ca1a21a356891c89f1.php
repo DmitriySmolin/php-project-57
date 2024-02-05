@@ -76,7 +76,6 @@
 <?php $component = $__componentOriginal18c21970322f9e5c938bc954620c12bb; ?>
 <?php unset($__componentOriginal18c21970322f9e5c938bc954620c12bb); ?>
 <?php endif; ?>
-
         </div>
 
         <!-- Email Address -->
@@ -121,7 +120,6 @@
 <?php $component = $__componentOriginal18c21970322f9e5c938bc954620c12bb; ?>
 <?php unset($__componentOriginal18c21970322f9e5c938bc954620c12bb); ?>
 <?php endif; ?>
-
         </div>
 
         <!-- Password -->
@@ -146,7 +144,6 @@
 <?php $component = $__componentOriginale3da9d84bb64e4bc2eeebaafabfb2581; ?>
 <?php unset($__componentOriginale3da9d84bb64e4bc2eeebaafabfb2581); ?>
 <?php endif; ?>
-
             <?php if (isset($component)) { $__componentOriginal18c21970322f9e5c938bc954620c12bb = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal18c21970322f9e5c938bc954620c12bb = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.text-input','data' => ['id' => 'password','class' => 'block mt-1 w-full','type' => 'password','name' => 'password','required' => true,'autocomplete' => 'new-password']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
@@ -167,8 +164,6 @@
 <?php $component = $__componentOriginal18c21970322f9e5c938bc954620c12bb; ?>
 <?php unset($__componentOriginal18c21970322f9e5c938bc954620c12bb); ?>
 <?php endif; ?>
-
-
         </div>
 
         <!-- Confirm Password -->
@@ -193,7 +188,6 @@
 <?php $component = $__componentOriginale3da9d84bb64e4bc2eeebaafabfb2581; ?>
 <?php unset($__componentOriginale3da9d84bb64e4bc2eeebaafabfb2581); ?>
 <?php endif; ?>
-
             <?php if (isset($component)) { $__componentOriginal18c21970322f9e5c938bc954620c12bb = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal18c21970322f9e5c938bc954620c12bb = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.text-input','data' => ['id' => 'password_confirmation','class' => 'block mt-1 w-full','type' => 'password','name' => 'password_confirmation','required' => true,'autocomplete' => 'new-password']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
@@ -214,16 +208,14 @@
 <?php $component = $__componentOriginal18c21970322f9e5c938bc954620c12bb; ?>
 <?php unset($__componentOriginal18c21970322f9e5c938bc954620c12bb); ?>
 <?php endif; ?>
-
-
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="<?php echo e(route('login')); ?>">
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+               href="<?php echo e(route('login')); ?>">
                 <?php echo e(__('views.auth.already_registered')); ?>
 
             </a>
-
             <?php if (isset($component)) { $__componentOriginald411d1792bd6cc877d687758b753742c = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginald411d1792bd6cc877d687758b753742c = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.primary-button','data' => ['class' => 'ms-4']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>

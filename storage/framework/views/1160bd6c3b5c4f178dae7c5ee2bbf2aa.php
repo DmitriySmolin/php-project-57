@@ -97,7 +97,6 @@
 <?php $component = $__componentOriginal18c21970322f9e5c938bc954620c12bb; ?>
 <?php unset($__componentOriginal18c21970322f9e5c938bc954620c12bb); ?>
 <?php endif; ?>
-            
         </div>
 
         <!-- Password -->
@@ -143,8 +142,6 @@
 <?php $component = $__componentOriginal18c21970322f9e5c938bc954620c12bb; ?>
 <?php unset($__componentOriginal18c21970322f9e5c938bc954620c12bb); ?>
 <?php endif; ?>
-
-            
         </div>
 
         <!-- Remember Me -->
