@@ -17,7 +17,9 @@
                 <th>{{ __('views.task_status.index.id') }}</th>
                 <th>{{ __('views.task_status.index.name') }}</th>
                 <th>{{ __('views.task_status.index.created_at') }}</th>
-                @auth<th>{{ __('views.task_status.index.actions') }}</th>@endauth
+                @auth
+                    <th>{{ __('views.task_status.index.actions') }}</th>
+                @endauth
             </tr>
             </thead>
             <tbody>
@@ -28,7 +30,8 @@
                     <td>{{ $status->created_at->format('d.m.Y') }}</td>
                     @auth
                         <td>
-                            <a data-confirm="__('views.task_status.index.delete_confirm')" data-method="delete" class="text-red-600 hover:text-red-900"
+                            <a data-confirm="__('views.task_status.index.delete_confirm')" data-method="delete"
+                               class="text-red-600 hover:text-red-900"
                                href="{{ route('task_statuses.destroy', $status->id) }}">
                                 {{ __('views.task_status.index.delete') }}
                             </a>
@@ -42,5 +45,6 @@
             @endforeach
             </tbody>
         </table>
+        {{ $taskStatuses->links() }}
     </div>
 @endsection
