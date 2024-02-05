@@ -62,7 +62,11 @@ class TaskStatusController extends Controller
      */
     public function edit(TaskStatus $taskStatus)
     {
-        //
+        if (!Auth::check()) {
+            abort(403, __('auth.forbidden'));
+        }
+
+        return view('task_status.edit', compact('taskStatus'));
     }
 
     /**
