@@ -72,11 +72,15 @@ class TaskStatusControllerTest extends TestCase
 
     public function testDelete(): void
     {
-        $taskStatus = TaskStatus::factory()->create();
-        $response = $this->actingAs($this->user)->delete(route('task_statuses.destroy', $taskStatus));
+        $taskStatusToKeep = TaskStatus::factory()->create();
+        $response = $this->delete(route('task_statuses.destroy', $taskStatusToKeep));
+        $response->assertStatus(419);
+        $this->assertDatabaseHas('task_statuses', ['id' => (array) $taskStatusToKeep['id']]);
+
+        $taskStatusToDelete = TaskStatus::factory()->create();
+        $response = $this->actingAs($this->user)->delete(route('task_statuses.destroy', $taskStatusToDelete));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-
-        $this->assertDatabaseMissing('task_statuses', ['id' => (array) $taskStatus['id']]);
+        $this->assertDatabaseMissing('task_statuses', ['id' => (array) $taskStatusToDelete['id']]);
     }
 }
