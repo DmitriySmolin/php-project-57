@@ -98,6 +98,9 @@ class TaskStatusController extends Controller
      */
     public function destroy(TaskStatus $taskStatus)
     {
+        if (!Auth::check()) {
+            abort(419);
+        }
         $taskStatus->delete();
 
         flash(__('flash.task_statuses.delete.success'))->success();
