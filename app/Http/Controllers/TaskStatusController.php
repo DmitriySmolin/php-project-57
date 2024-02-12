@@ -82,7 +82,11 @@ class TaskStatusController extends Controller
         }
 
         $data = $request->validate([
-            'name' => 'required|unique:task_statuses',
+            'name' => 'required|max:255|unique:task_statuses,name,' . $taskStatus->id,
+        ], [
+            'name.unique' => __('validation.unique_name'),
+        ], [
+            'name' => __('validation.attributes.status')
         ]);
 
         $taskStatus->fill($data);
