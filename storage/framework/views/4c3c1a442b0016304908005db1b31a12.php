@@ -16,7 +16,9 @@
                 <th><?php echo e(__('views.task_status.index.id')); ?></th>
                 <th><?php echo e(__('views.task_status.index.name')); ?></th>
                 <th><?php echo e(__('views.task_status.index.created_at')); ?></th>
-                <?php if(auth()->guard()->check()): ?><th><?php echo e(__('views.task_status.index.actions')); ?></th><?php endif; ?>
+                <?php if(auth()->guard()->check()): ?>
+                    <th><?php echo e(__('views.task_status.index.actions')); ?></th>
+                <?php endif; ?>
             </tr>
             </thead>
             <tbody>
@@ -27,7 +29,8 @@
                     <td><?php echo e($status->created_at->format('d.m.Y')); ?></td>
                     <?php if(auth()->guard()->check()): ?>
                         <td>
-                            <a data-confirm="__('views.task_status.index.delete_confirm')" data-method="delete" class="text-red-600 hover:text-red-900"
+                            <a data-confirm="<?php echo e(__('views.task_status.index.delete_confirm')); ?>" data-method="delete"
+                               class="text-red-600 hover:text-red-900"
                                href="<?php echo e(route('task_statuses.destroy', $status->id)); ?>">
                                 <?php echo e(__('views.task_status.index.delete')); ?>
 
@@ -43,6 +46,8 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
         </table>
+        <?php echo e($taskStatuses->links()); ?>
+
     </div>
 <?php $__env->stopSection(); ?>
 

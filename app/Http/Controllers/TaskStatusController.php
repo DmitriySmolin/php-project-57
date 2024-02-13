@@ -13,7 +13,7 @@ class TaskStatusController extends Controller
      */
     public function index()
     {
-        $taskStatuses = TaskStatus::orderBy('id')->get()->paginate(15);
+        $taskStatuses = TaskStatus::orderBy('id')->paginate(15);
         return view("task_status.index", compact("taskStatuses"));
     }
 
