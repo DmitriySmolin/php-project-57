@@ -4,7 +4,7 @@
     <div class="grid col-span-full">
         <h1 class="mb-5">{{ __('views.task_status.create.header') }}</h1>
 
-        {{ Form::open(['route' => 'task_statuses.store', 'method' => 'POST', 'class' => 'w-50']) }}
+        {{ Form::open(['route' => 'task_statuses.store', 'class' => 'w-50']) }}
         <div class="flex flex-col">
             <div>
                 {{ Form::label('name', __('views.task_status.create.label')) }}
