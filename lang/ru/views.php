@@ -36,4 +36,21 @@ return [
             'button' => 'Обновить',
         ],
     ],
+    'task' => [
+        'index' => [
+            'header' => 'Задачи',
+            'apply' => 'Применить',
+            'create_task' => 'Создать задачу',
+            'id' => 'ID',
+            'status' => 'Статус',
+            'name' => 'Имя',
+            'created_by' => 'Автор',
+            'assigned_to' => 'Исполнитель',
+            'created_at' => 'Дата создания',
+            'actions' => 'Действия',
+            'delete' => 'Удалить',
+            'delete_confirm' => 'Вы уверены?',
+            'edit' => 'Изменить',
+        ],
+    ],
 ];
