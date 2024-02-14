@@ -2,34 +2,23 @@
 
 namespace App\Models;
 
-use App\Models\TaskStatus;
-use App\Models\User;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-return new class extends Migration {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
-    {
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('description')->nullable();
-            $table->foreignIdFor(TaskStatus::class, 'status_id')->constrained('task_statuses');
-            $table->foreignIdFor(User::class, 'created_by_id')->constrained('users');
-            $table->foreignIdFor(User::class, 'assigned_to_id')->nullable()->constrained('users');
-            $table->timestamps();
-        });
-    }
+class Task extends Model
+{
+    use HasFactory;
 
     /**
-     * Reverse the migrations.
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
      */
-    public function down(): void
-    {
-        Schema::dropIfExists('tasks');
-    }
-};
+    protected $fillable = [
+        'name',
+        'description',
+        'status_id',
+        'created_by_id',
+        'assigned_to_id',
+    ];
+}
