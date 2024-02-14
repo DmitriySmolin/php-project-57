@@ -61,7 +61,7 @@ class TaskStatusControllerTest extends TestCase
         $taskStatus = TaskStatus::factory()->create();
         $data = TaskStatus::factory()->make()->only('name');
         $response = $this->patch(route('task_statuses.update', $taskStatus), (array) $data);
-        $response->assertStatus(419);
+        $response->assertForbidden();
         $this->assertDatabaseMissing('task_statuses', (array) $data);
         $response = $this->actingAs($this->user)->patch(route('task_statuses.update', $taskStatus), (array) $data);
         $response->assertSessionHasNoErrors();
@@ -74,7 +74,7 @@ class TaskStatusControllerTest extends TestCase
     {
         $taskStatusToKeep = TaskStatus::factory()->create();
         $response = $this->delete(route('task_statuses.destroy', $taskStatusToKeep));
-        $response->assertStatus(419);
+        $response->assertForbidden();
         $this->assertDatabaseHas('task_statuses', ['id' => (array) $taskStatusToKeep['id']]);
 
         $taskStatusToDelete = TaskStatus::factory()->create();
