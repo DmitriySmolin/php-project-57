@@ -21,9 +21,9 @@ class TaskFactory extends Factory
         return [
             'name' => fake()->sentence(),
             'description' => fake()->sentence(10),
-            'status_id' => TaskStatus::factory(),
-            'created_by_id' => User::factory(),
-            'assigned_to_id' => User::factory(),
+            'status_id' => TaskStatus::inRandomOrder()->first(),
+            'created_by_id' => User::inRandomOrder()->first(),
+            'assigned_to_id' => User::inRandomOrder()->first(),
         ];
     }
 }
