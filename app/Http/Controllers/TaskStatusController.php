@@ -17,8 +17,8 @@ class TaskStatusController extends Controller
      */
     public function index()
     {
-        $taskStatuses = TaskStatus::orderBy('id')->paginate(15);
-        return view("task_status.index", compact("taskStatuses"));
+        $taskStatuses = TaskStatus::orderBy('id')->paginate();
+        return view('task_status.index', compact('taskStatuses'));
     }
 
     /**
@@ -34,10 +34,8 @@ class TaskStatusController extends Controller
      */
     public function store(StoreTaskStatusRequest $request)
     {
-
         $data = $request->validated();
-        $taskStatus = new TaskStatus();
-        $taskStatus->fill($data);
+        $taskStatus = new TaskStatus($data);
         $taskStatus->save();
 
         flash(__('flash.task_statuses.store.success'))->success();
@@ -67,7 +65,6 @@ class TaskStatusController extends Controller
     public function update(StoreTaskStatusRequest $request, TaskStatus $taskStatus)
     {
         $data = $request->validated();
-
         $taskStatus->fill($data);
         $taskStatus->save();
 
