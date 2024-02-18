@@ -5,10 +5,8 @@
         <h1 class="mb-5">{{ __('views.task_status.index.header') }}</h1>
         @auth
             <div>
-                <a href="{{ route('task_statuses.create') }}"
-                   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    {{ __('views.task_status.index.create') }}
-                </a>
+                <x-link-button route="{{ route('task_statuses.create') }}"
+                               text="{{ __('views.task_status.index.create') }}"/>
             </div>
         @endauth
         <table class="mt-4">
