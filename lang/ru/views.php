@@ -51,5 +51,15 @@ return [
             'created_at' => 'Дата создания',
             'actions' => 'Действия',
         ],
+        'create' => [
+            'header' => 'Создать задачу',
+            'label' => 'Имя',
+            'description' => 'Описание',
+            'status' => 'Статус',
+            'default_dropdown' => '----------',
+            'assigned_to' => 'Исполнитель',
+            'labels' => 'Метки',
+            'button' => 'Создать',
+        ],
     ],
 ];
