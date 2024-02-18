@@ -6,6 +6,7 @@ return [
         "email"=> "email",
         "password"=> "пароль",
         "status" => "статус",
+        'task' => 'задача',
     ],
     "confirmed"=> ":Attribute и подтверждение не совпадают",
     "min"=> [
