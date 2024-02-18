@@ -10,9 +10,7 @@
                 {{ Form::label('name', __('views.task_status.edit.label')) }}
             </div>
             <x-input-name />
-            <div class="mt-2">
-                {{ Form::submit(__('views.task_status.edit.button'), ['class' => 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded']) }}
-            </div>
+            <x-submit-button caption="{{ __('views.task_status.create.button') }}" />
         </div>
         {{ Form::close() }}
     </div>
