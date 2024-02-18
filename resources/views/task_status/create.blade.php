@@ -9,12 +9,7 @@
             <div>
                 {{ Form::label('name', __('views.task_status.create.label')) }}
             </div>
-            <div class="mt-2">
-                {{ Form::text('name', null, ['class' => 'rounded border-gray-300 w-1/3']) }}
-                @error('name')
-                <div class="text-rose-600">{{ $message }}</div>
-                @enderror
-            </div>
+            <x-input-name />
             <div class="mt-2">
                 {{ Form::submit(__('views.task_status.create.button'), ['class' => 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded']) }}
             </div>
