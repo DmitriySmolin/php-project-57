@@ -5,8 +5,7 @@
         <h1 class="mb-5">{{ __('views.task_status.index.header') }}</h1>
         @auth
             <div>
-                <x-link-button route="{{ route('task_statuses.create') }}"
-                               text="{{ __('views.task_status.index.create') }}"/>
+                <x-link-button route="{{ route('task_statuses.create') }}" text="{{ __('views.task_status.index.create') }}" />
             </div>
         @endauth
         <table class="mt-4">
@@ -15,9 +14,7 @@
                 <th>{{ __('views.task_status.index.id') }}</th>
                 <th>{{ __('views.task_status.index.name') }}</th>
                 <th>{{ __('views.task_status.index.created_at') }}</th>
-                @auth
-                    <th>{{ __('views.task_status.index.actions') }}</th>
-                @endauth
+                @auth<th>{{ __('views.task_status.index.actions') }}</th>@endauth
             </tr>
             </thead>
             <tbody>
@@ -33,10 +30,8 @@
                                href="{{ route('task_statuses.destroy', $status->id) }}">
                                 {{ __('views.task_status.index.delete') }}
                             </a>
-                            <a class="text-blue-600 hover:text-blue-900"
-                               href="{{ route('task_statuses.edit', $status->id) }}">
-                                {{ __('views.task_status.index.edit') }}
-                            </a>
+                            <x-link-blue route="{{ route('task_statuses.edit', $status->id) }}"
+                                         text="{{ __('views.task_status.index.edit') }}" />
                         </td>
                     @endauth
                 </tr>

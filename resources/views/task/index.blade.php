@@ -69,9 +69,7 @@
                     <td>{{ $task->id }}</td>
                     <td>{{ $task->status->name }}</td>
                     <td>
-                        <a class="text-blue-600 hover:text-blue-900" href="{{ route('tasks.show', $task->id) }}">
-                            {{ $task->name }}
-                        </a>
+                        <x-link-blue route="{{ route('tasks.show', $task->id) }}" text="{{ $task->name }}" />
                     </td>
                     <td>{{ $task->createdBy->name }}</td>
                     <td>{{ $task->assignedTo->name }}</td>
@@ -82,10 +80,8 @@
                                class="text-red-600 hover:text-red-900">
                                 {{ __('views.task.index.delete') }}
                             </a>
-                            <a href="{{ route('tasks.edit', $task->id) }}"
-                               class="text-blue-600 hover:text-blue-900">
-                                {{ __('views.task.index.edit') }}
-                            </a>
+                            <x-link-blue route="{{ route('tasks.edit', $task->id) }}"
+                                         text="{{ __('views.task.index.edit') }}" />
                         </td>
                     @endauth
                 </tr>
