@@ -8,35 +8,16 @@
             <div>
                 {{ Form::open(['route' => 'tasks.index', 'method' => 'GET']) }}
                 <div class="flex">
-                    <div>
-                        <select class="rounded border-gray-300" name="filter[status_id]">
-                            <option selected="selected" value="">{{ __('views.task.index.status') }}</option>
-                            @foreach ($taskStatuses as $status)
-                                <option value="{{ $status->id }}">{{ $status->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div>
-                        <select class="ml-2 rounded border-gray-300" name="filter[created_by_id]">
-                            <option selected="selected" value="">{{ __('views.task.index.created_by') }}</option>
-                            @foreach ($users as $user)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div>
-                        <select class="ml-2 rounded border-gray-300" name="filter[assigned_to_id]">
-                            <option selected="selected" value="">{{ __('views.task.index.assigned_to') }}</option>
-                            @foreach ($users as $user)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    <x-filter name="filter[status_id]" default="{{ __('views.task.index.status') }}"
+                              items="{{ json_encode($taskStatuses) }}" />
+                    <x-filter name="filter[created_by_id]" default="{{ __('views.task.index.created_by') }}"
+                              items="{{ json_encode($users) }}" class="ml-2" />
+                    <x-filter name="filter[assigned_to_id]" default="{{ __('views.task.index.assigned_to') }}"
+                              items="{{ json_encode($users) }}" class="ml-2" />
                     <div>
                         <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
                                type="submit" value="{{ __('views.task.index.apply') }}">
                     </div>
-
                 </div>
                 {{ Form::close() }}
             </div>
