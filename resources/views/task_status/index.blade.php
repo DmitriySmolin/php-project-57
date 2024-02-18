@@ -36,6 +36,8 @@
             @endforeach
             </tbody>
         </table>
-        {{ $taskStatuses->links() }}
+        <div class="mt-4">
+            {{ $taskStatuses->links() }}
+        </div>
     </div>
 @endsection
