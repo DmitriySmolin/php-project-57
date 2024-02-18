@@ -23,8 +23,7 @@
             </div>
 
             <div class="ml-auto">
-                <x-link-button route="{{ route('tasks.create') }}"
-                               text="{{ __('views.task.index.create_task') }}"
+                <x-link-button route="{{ route('tasks.create') }}" text="{{ __('views.task.index.create_task') }}"
                                class="ml-2"/>
             </div>
         </div>
@@ -57,10 +56,10 @@
                     @auth
                         <td>
                             <x-link-red route="{{ route('tasks.destroy', $task->id) }}"
-                                        confirm="{{ __('views.task.index.delete_confirm') }}"
-                                        text="{{ __('views.task.index.delete') }}"/>
+                                        confirm="{{ __('views.actions.delete_confirm') }}"
+                                        text="{{ __('views.actions.delete') }}"/>
                             <x-link-blue route="{{ route('tasks.edit', $task->id) }}"
-                                         text="{{ __('views.task.index.edit') }}"/>
+                                         text="{{ __('views.actions.edit') }}"/>
                         </td>
                     @endauth
                 </tr>

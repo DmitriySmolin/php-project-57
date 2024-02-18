@@ -26,10 +26,10 @@
                     @auth
                         <td>
                             <x-link-red route="{{ route('task_statuses.destroy', $status->id) }}"
-                                        confirm="{{ __('views.task_status.index.delete_confirm') }}"
-                                        text="{{ __('views.task_status.index.delete') }}" />
+                                        confirm="{{ __('views.actions.delete_confirm') }}"
+                                        text="{{ __('views.actions.delete') }}" />
                             <x-link-blue route="{{ route('task_statuses.edit', $status->id) }}"
-                                         text="{{ __('views.task_status.index.edit') }}" />
+                                         text="{{ __('views.actions.edit') }}" />
                         </td>
                     @endauth
                 </tr>
