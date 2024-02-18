@@ -25,11 +25,9 @@
                     <td>{{ $status->created_at->format('d.m.Y') }}</td>
                     @auth
                         <td>
-                            <a data-confirm="{{ __('views.task_status.index.delete_confirm') }}" data-method="delete"
-                               class="text-red-600 hover:text-red-900"
-                               href="{{ route('task_statuses.destroy', $status->id) }}">
-                                {{ __('views.task_status.index.delete') }}
-                            </a>
+                            <x-link-red route="{{ route('task_statuses.destroy', $status->id) }}"
+                                        confirm="{{ __('views.task_status.index.delete_confirm') }}"
+                                        text="{{ __('views.task_status.index.delete') }}" />
                             <x-link-blue route="{{ route('task_statuses.edit', $status->id) }}"
                                          text="{{ __('views.task_status.index.edit') }}" />
                         </td>

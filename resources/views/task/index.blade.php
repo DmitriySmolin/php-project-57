@@ -76,10 +76,9 @@
                     <td>{{ $task->created_at->format('d.m.Y') }}</td>
                     @auth
                         <td>
-                            <a data-confirm="{{ __('views.task.index.delete_confirm') }}" data-method="DELETE" href="{{ route('tasks.destroy', $task->id) }}"
-                               class="text-red-600 hover:text-red-900">
-                                {{ __('views.task.index.delete') }}
-                            </a>
+                            <x-link-red route="{{ route('tasks.destroy', $task->id) }}"
+                                        confirm="{{ __('views.task.index.delete_confirm') }}"
+                                        text="{{ __('views.task.index.delete') }}" />
                             <x-link-blue route="{{ route('tasks.edit', $task->id) }}"
                                          text="{{ __('views.task.index.edit') }}" />
                         </td>
