@@ -67,15 +67,15 @@
             @foreach ($tasks as $task)
                 <tr class="border-b border-dashed text-left">
                     <td>{{ $task->id }}</td>
-                    <td>{{ $task->status }}</td>
+                    <td>{{ $task->status->name }}</td>
                     <td>
                         <a class="text-blue-600 hover:text-blue-900" href="{{ route('tasks.show', $task->id) }}">
                             {{ $task->name }}
                         </a>
                     </td>
-                    <td>{{ $task->created_by }}</td>
-                    <td>{{ $task->assigned_to }}</td>
-                    <td>{{ $task->created_at }}</td>
+                    <td>{{ $task->createdBy->name }}</td>
+                    <td>{{ $task->assignedTo->name }}</td>
+                    <td>{{ $task->created_at->format('d.m.Y') }}</td>
                     @auth
                         <td>
                             <a data-confirm="{{ __('views.task.index.delete_confirm') }}" data-method="DELETE" href="{{ route('tasks.destroy', $task->id) }}"
