@@ -92,6 +92,8 @@
             @endforeach
             </tbody>
         </table>
-        {{ $tasks->links() }}
+        <div class="mt-4">
+            {{ $tasks->links() }}
+        </div>
     </div>
 @endsection
