@@ -2,32 +2,18 @@
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
         <!--Title-->
         <a href="{{ route('home') }}" class="flex items-center">
-          <span
-              class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{ __('header.app_name') }}
-          </span>
+            <span
+                class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{ __('header.app_name') }}</span>
         </a>
 
         <!--Buttons-->
         <div class="flex items-center lg:order-2">
             @auth
-                <a href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();"
-                   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">
-                    {{ __('header.logout') }}
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                </form>
+                <x-link-button route="{{ route('logout') }}" text="{{ __('header.logout') }}" class="ml-2"
+                               data-method="POST"/>
             @else
-                <a href="{{ route('login') }}"
-                   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    {{ __('header.login') }}
-                </a>
-                <a href="{{ route('register') }}"
-                   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">
-                    {{ __('header.register') }}
-                </a>
+                <x-link-button route="{{ route('login') }}" text="{{ __('header.login') }}"/>
+                <x-link-button route="{{ route('register') }}" text="{{ __('header.register') }}" class="ml-2"/>
             @endauth
         </div>
 
