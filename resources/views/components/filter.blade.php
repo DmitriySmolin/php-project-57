@@ -6,3 +6,6 @@
         @endforeach
     </select>
 </div>
+@error($name)
+<div class="text-rose-600">{{ $message }}</div>
+@enderror
