@@ -24,11 +24,12 @@
                 </div>
                 {{ Form::close() }}
             </div>
-
-            <div class="ml-auto">
-                <x-link-button route="{{ route('tasks.create') }}" text="{{ __('views.task.index.create_task') }}"
-                               class="ml-2" />
-            </div>
+            @auth
+                <div class="ml-auto">
+                    <x-link-button route="{{ route('tasks.create') }}" text="{{ __('views.task.index.create_task') }}"
+                                   class="ml-2" />
+                </div>
+            @endauth
         </div>
 
         <table class="mt-4">
@@ -58,9 +59,11 @@
                     <td>{{ $task->created_at->format('d.m.Y') }}</td>
                     @auth
                         <td>
-                            <x-link-red route="{{ route('tasks.destroy', $task->id) }}"
-                                        confirm="{{ __('views.actions.delete_confirm') }}"
-                                        text="{{ __('views.actions.delete') }}" />
+                            @can('delete', $task)
+                                <x-link-red route="{{ route('tasks.destroy', $task->id) }}"
+                                            confirm="{{ __('views.actions.delete_confirm') }}"
+                                            text="{{ __('views.actions.delete') }}" />
+                            @endcan
                             <x-link-blue route="{{ route('tasks.edit', $task->id) }}"
                                          text="{{ __('views.actions.edit') }}" />
                         </td>
