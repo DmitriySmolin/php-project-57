@@ -62,5 +62,15 @@ return [
             'labels' => 'Метки',
             'button' => 'Создать',
         ],
+        'edit' => [
+            'header' => 'Изменение задачи',
+            'label' => 'Имя',
+            'description' => 'Описание',
+            'status' => 'Статус',
+            'placeholder' => '----------',
+            'assigned_to' => 'Исполнитель',
+            'labels' => 'Метки',
+            'button' => 'Обновить',
+        ],
     ],
 ];
