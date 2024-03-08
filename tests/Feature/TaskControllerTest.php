@@ -79,6 +79,11 @@ class TaskControllerTest extends TestCase
         $response->assertForbidden();
         $this->assertDatabaseHas('tasks', ['id' => (array) $taskToKeep['id']]);
 
+        $anotherUser = User::factory()->create();
+        $response = $this->actingAs($anotherUser)->delete(route('tasks.destroy', $taskToKeep));
+        $response->assertForbidden();
+        $this->assertDatabaseHas('tasks', ['id' => (array) $taskToKeep['id']]);
+
         $taskToDelete = Task::factory()->create();
         $response = $this->actingAs($this->user)->delete(route('tasks.destroy', $taskToDelete));
         $response->assertSessionHasNoErrors();
