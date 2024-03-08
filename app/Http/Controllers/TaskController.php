@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
@@ -19,12 +20,13 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $tasks = Task::orderBy('id')->paginate();
         $taskStatusesById = TaskStatus::all()->pluck('name', 'id');
         $usersById = User::all()->pluck('name', 'id');
-        return view('task.index', compact('tasks', 'taskStatusesById', 'usersById'));
+        $filter = $request->input('filter');
+        return view('task.index', compact('tasks', 'taskStatusesById', 'usersById', 'filter'));
     }
 
     /**
