@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\TaskStatus;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Task;
@@ -48,7 +49,7 @@ class TaskControllerTest extends TestCase
 
     public function testStore(): void
     {
-        $data = Task::factory()->make()->only('name');
+        $data = Task::factory()->make()->only('name', 'status_id');
         $response = $this->actingAs($this->user)->post(route('tasks.store', $data));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
@@ -59,7 +60,7 @@ class TaskControllerTest extends TestCase
     public function testUpdate(): void
     {
         $task = Task::factory()->create();
-        $data = Task::factory()->make()->only('name');
+        $data = Task::factory()->make()->only('name', 'status_id');
 
         $response = $this->patch(route('tasks.update', $task), (array) $data);
         $response->assertForbidden();
