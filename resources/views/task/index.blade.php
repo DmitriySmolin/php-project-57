@@ -8,12 +8,15 @@
             <div>
                 {{ Form::open(['route' => 'tasks.index', 'method' => 'GET']) }}
                 <div class="flex">
-                    <x-filter name="filter[status_id]" placeholder="{{ __('views.task.index.status') }}"
-                              items="{{ json_encode($taskStatuses->pluck('name', 'id')) }}" />
-                    <x-filter name="filter[created_by_id]" placeholder="{{ __('views.task.index.created_by') }}"
-                              items="{{ json_encode($users->pluck('name', 'id')) }}" class="ml-2" />
-                    <x-filter name="filter[assigned_to_id]" placeholder="{{ __('views.task.index.assigned_to') }}"
-                              items="{{ json_encode($users->pluck('name', 'id')) }}" class="ml-2" />
+                    <div>
+                        {{ Form::select('filter[status_id]', $taskStatusesById, null, ['class' => 'rounded border-gray-300', 'placeholder' =>  __('views.task.index.status')]) }}
+                    </div>
+                    <div>
+                        {{ Form::select('filter[created_by_id]', $usersById, null, ['class' => 'ml-2 rounded border-gray-300', 'placeholder' =>  __('views.task.index.created_by')]) }}
+                    </div>
+                    <div>
+                        {{ Form::select('filter[assigned_to_id]', $usersById, null, ['class' => 'ml-2 rounded border-gray-300', 'placeholder' =>  __('views.task.index.assigned_to')]) }}
+                    </div>
                     <div>
                         <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
                                type="submit" value="{{ __('views.task.index.apply') }}">

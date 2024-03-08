@@ -22,9 +22,9 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::orderBy('id')->paginate();
-        $taskStatuses = TaskStatus::all();
-        $users = User::all();
-        return view('task.index', compact('tasks', 'taskStatuses', 'users'));
+        $taskStatusesById = TaskStatus::all()->pluck('name', 'id');
+        $usersById = User::all()->pluck('name', 'id');
+        return view('task.index', compact('tasks', 'taskStatusesById', 'usersById'));
     }
 
     /**
