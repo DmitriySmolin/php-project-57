@@ -8,11 +8,11 @@
             <div>
                 {{ Form::open(['route' => 'tasks.index', 'method' => 'GET']) }}
                 <div class="flex">
-                    <x-filter name="filter[status_id]" default="{{ __('views.task.index.status') }}"
+                    <x-filter name="filter[status_id]" placeholder="{{ __('views.task.index.status') }}"
                               items="{{ json_encode($taskStatuses->pluck('name', 'id')) }}" />
-                    <x-filter name="filter[created_by_id]" default="{{ __('views.task.index.created_by') }}"
+                    <x-filter name="filter[created_by_id]" placeholder="{{ __('views.task.index.created_by') }}"
                               items="{{ json_encode($users->pluck('name', 'id')) }}" class="ml-2" />
-                    <x-filter name="filter[assigned_to_id]" default="{{ __('views.task.index.assigned_to') }}"
+                    <x-filter name="filter[assigned_to_id]" placeholder="{{ __('views.task.index.assigned_to') }}"
                               items="{{ json_encode($users->pluck('name', 'id')) }}" class="ml-2" />
                     <div>
                         <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"

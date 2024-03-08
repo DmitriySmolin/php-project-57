@@ -45,6 +45,7 @@ return [
             'create_task' => 'Создать задачу',
             'id' => 'ID',
             'status' => 'Статус',
+            'placeholder' => '----------',
             'name' => 'Имя',
             'created_by' => 'Автор',
             'assigned_to' => 'Исполнитель',
