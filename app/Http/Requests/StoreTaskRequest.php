@@ -26,7 +26,6 @@ class StoreTaskRequest extends FormRequest
             'name' => ['required', 'string', Rule::unique('tasks', 'name')->ignore($this->task)],
             'description' => 'string|nullable',
             'status_id' => 'required|exists:task_statuses,id',
-            'created_by_id' => 'required|exists:users,id',
             'assigned_to_id' => 'nullable|exists:users,id',
         ];
     }

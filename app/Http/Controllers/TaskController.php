@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -42,7 +43,8 @@ class TaskController extends Controller
     public function store(StoreTaskRequest $request)
     {
         $data = $request->validated();
-        $task = new Task($data);
+        $user = Auth::user();
+        $task = $user->createdTasks()->make($data);
         $task->save();
 
         flash(__('flash.tasks.store.success'))->success();
