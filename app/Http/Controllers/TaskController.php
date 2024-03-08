@@ -22,10 +22,10 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        $tasks = Task::orderBy('id')->paginate();
+        $filter = $request->input('filter');
+        $tasks = Task::filter($filter)->orderBy('id')->paginate();
         $taskStatusesById = TaskStatus::all()->pluck('name', 'id');
         $usersById = User::all()->pluck('name', 'id');
-        $filter = $request->input('filter');
         return view('task.index', compact('tasks', 'taskStatusesById', 'usersById', 'filter'));
     }
 

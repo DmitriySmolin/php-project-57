@@ -36,4 +36,19 @@ class Task extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function filter($params)
+    {
+        $filterKeys = ['status_id', 'created_by_id', 'assigned_to_id'];
+
+        $query = self::query();
+
+        foreach ($filterKeys as $key) {
+            if (isset($params[$key])) {
+                $query->where($key, $params[$key]);
+            }
+        }
+
+        return $query;
+    }
 }
