@@ -7,7 +7,7 @@
         {{ Form::open(['route' => 'tasks.store', 'class' => 'w-50']) }}
         <div class="flex flex-col">
             <div>
-                {{ Form::label('name', __('views.task.create.label')) }}
+                {{ Form::label('name', __('views.task.create.name')) }}
             </div>
             <x-input-name />
             <div class="mt-2">

@@ -54,7 +54,7 @@ return [
         ],
         'create' => [
             'header' => 'Создать задачу',
-            'label' => 'Имя',
+            'name' => 'Имя',
             'description' => 'Описание',
             'status' => 'Статус',
             'default_dropdown' => '----------',
@@ -64,7 +64,7 @@ return [
         ],
         'edit' => [
             'header' => 'Изменение задачи',
-            'label' => 'Имя',
+            'name' => 'Имя',
             'description' => 'Описание',
             'status' => 'Статус',
             'placeholder' => '----------',

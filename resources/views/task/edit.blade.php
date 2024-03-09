@@ -7,7 +7,7 @@
         {{ Form::model($task, ['route' => ['tasks.update', $task], 'method' => 'PATCH', 'class' => 'w-50']) }}
         <div class="flex flex-col">
             <div>
-                {{ Form::label('name', __('views.task.edit.label')) }}
+                {{ Form::label('name', __('views.task.edit.name')) }}
             </div>
             <x-input-name />
             <div class="mt-2">
