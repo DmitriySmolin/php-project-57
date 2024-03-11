@@ -13,6 +13,7 @@
                 <x-li-header route="{{ route('tasks.index') }}" text="{{ __('header.tasks') }}"/>
                 <x-li-header route="{{ route('task_statuses.index') }}" text="{{ __('header.statuses') }}"/>
                 <x-li-header route="{{ route('task_statuses.index') }}" text="{{ __('header.labels') }}"/>
+                <x-li-header route="{{ route('labels.index') }}" text="{{ __('header.labels') }}" />
             </ul>
         </div>
 
