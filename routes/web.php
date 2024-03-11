@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LabelController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
@@ -46,4 +47,5 @@ Route::get('/testMail', function () {
 
 Route::resource('task_statuses', TaskStatusController::class);
 Route::resource('tasks', TaskController::class);
+Route::resource('labels', LabelController::class);
 require __DIR__ . '/auth.php';
