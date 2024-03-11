@@ -80,4 +80,27 @@ return [
             'labels' => 'Метки:',
         ],
     ],
+    'label' => [
+        'index' => [
+            'header' => 'Метки',
+            'create' => 'Создать метку',
+            'id' => 'ID',
+            'name' => 'Имя',
+            'description' => 'Описание',
+            'created_at' => 'Дата создания',
+            'actions' => 'Действия',
+        ],
+        'create' => [
+            'header' => 'Создать метку',
+            'name' => 'Имя',
+            'description' => 'Описание',
+            'button' => 'Создать',
+        ],
+        'edit' => [
+            'header' => 'Изменение метки',
+            'name' => 'Имя',
+            'description' => 'Описание',
+            'button' => 'Обновить',
+        ],
+    ],
 ];
