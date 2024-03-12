@@ -25,6 +25,7 @@
                     <td>{{ $label->name }}</td>
                     <td>{{ $label->description }}</td>
                     <td>{{ $label->created_at}}</td>
+                    <td>{{ $label->created_at->format('d.m.Y') }}</td>
                     @auth
                         <td>
                             <x-link-red route="{{ route('labels.destroy', $label->id) }}"
