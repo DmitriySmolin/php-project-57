@@ -2,6 +2,7 @@ start:
 	php artisan serve
 install:
 	composer install
+	make fix-fakerphp
 	cp -n .env.example .env
 	php artisan key:gen --ansi
 	php artisan migrate
