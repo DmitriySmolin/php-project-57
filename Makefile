@@ -5,8 +5,7 @@ install:
 	make fix-fakerphp
 	cp -n .env.example .env
 	php artisan key:gen --ansi
-	php artisan migrate
-    php artisan db:seed
+	php artisan migrate:fresh --seed
 	npm ci
 	npm run build
 validate:
@@ -24,6 +23,7 @@ stan:
 build-frontend:
 	npm run dev
 
-
+fix-fakerphp:
+	cp -f src/Person.php vendor/fakerphp/faker/src/Faker/Provider/ru_RU/Person.php
 
 
