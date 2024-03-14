@@ -6,10 +6,7 @@
 
         {{ Form::open(['route' => 'labels.store', 'class' => 'w-50']) }}
         <div class="flex flex-col">
-            <div>
-                {{ Form::label('name', __('views.label.create.name')) }}
-            </div>
-            <x-input-name />
+            <x-input-name label="{{ __('views.label.create.name') }}" />
             <div class="mt-2">
                 {{ Form::label('description', __('views.label.create.description')) }}
             </div>
