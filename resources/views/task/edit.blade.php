@@ -7,12 +7,7 @@
         {{ Form::model($task, ['route' => ['tasks.update', $task], 'method' => 'PATCH', 'class' => 'w-50']) }}
         <div class="flex flex-col">
             <x-input-name label="{{ __('views.task.edit.name') }}" />
-            <div class="mt-2">
-                {{ Form::label('description', __('views.task.edit.description')) }}
-            </div>
-            <div>
-                {{ Form::textarea('description', null, ['class' => 'rounded border-gray-300 w-1/3 h-32', 'cols' => '50', 'rows' => '10']) }}
-            </div>
+            <x-textarea-description label="{{ __('views.task.edit.description') }}" />
             <div class="mt-2">
                 {{ Form::label('status_id', __('views.task.edit.status')) }}
             </div>
