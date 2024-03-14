@@ -18,8 +18,7 @@
                         {{ Form::select('filter[assigned_to_id]', $usersById, Arr::get($filter, 'assigned_to_id'), ['class' => 'ml-2 rounded border-gray-300', 'placeholder' =>  __('views.task.index.assigned_to')]) }}
                     </div>
                     <div>
-                        <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
-                               type="submit" value="{{ __('views.task.index.apply') }}">
+                        {{ Form::submit(__('views.task.index.apply'), ['class' => 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2']) }}
                     </div>
                 </div>
                 {{ Form::close() }}

@@ -11,18 +11,24 @@
             <div class="mt-2">
                 {{ Form::label('status_id', __('views.task.create.status')) }}
             </div>
-            <x-filter name="status_id" placeholder="{{ __('views.task.create.placeholder') }}"
-                      items="{{ json_encode($taskStatuses->pluck('name', 'id')) }}" class="w-1/3" />
+            <div>
+                {{ Form::select('status_id', $taskStatuses, null, ['class' => 'rounded border-gray-300 w-1/3', 'placeholder' => __('views.task.create.placeholder')]) }}
+            </div>
+            @error('status_id')
+            <div class="text-rose-600">{{ $message }}</div>
+            @enderror
             <div class="mt-2">
                 {{ Form::label('assigned_to_id', __('views.task.create.assigned_to')) }}
             </div>
-            <x-filter name="assigned_to_id" placeholder="{{ __('views.task.create.placeholder') }}"
-                      items="{{ json_encode($users->pluck('name', 'id')) }}" class="w-1/3" />
+            <div>
+                {{ Form::select('assigned_to_id', $users, null, ['class' => 'rounded border-gray-300 w-1/3', 'placeholder' => __('views.task.create.placeholder')]) }}
+            </div>
             <div class="mt-2">
                 {{ Form::label('labels', __('views.task.create.labels')) }}
             </div>
-            <x-filter name="labels[]" id="labels" placeholder="" multiple="multiple"
-                      items="{{ json_encode($labels->pluck('name', 'id')) }}" class="w-1/3 h-32" />
+            <div>
+                {{ Form::select('labels', $labels, null, ['class' => 'rounded border-gray-300 w-1/3 h-32', 'name' => 'labels[]', 'placeholder' => '', 'multiple' => 'multiple']) }}
+            </div>
             <x-submit-button caption="{{ __('views.task.create.button') }}" />
         </div>
         {{ Form::close() }}

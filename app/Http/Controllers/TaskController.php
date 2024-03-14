@@ -35,9 +35,9 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $taskStatuses = TaskStatus::all();
-        $users = User::all();
-        $labels = Label::all();
+        $taskStatuses = TaskStatus::pluck('name', 'id');
+        $users = User::pluck('name', 'id');
+        $labels = Label::pluck('name', 'id');
         return view('task.create', compact('taskStatuses', 'users', 'labels'));
     }
 
