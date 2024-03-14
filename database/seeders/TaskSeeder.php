@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Label;
 use App\Models\Task;
 use Illuminate\Database\Seeder;
 use Symfony\Component\Yaml\Yaml;
@@ -13,9 +14,17 @@ class TaskSeeder extends Seeder
      */
     public function run(): void
     {
-        $tasks = json_decode(file_get_contents(database_path('tasks.json')), true);
+        $tasks = Yaml::parseFile(database_path('tasks.yaml'));
         Task::factory(count($tasks))
             ->sequence(...$tasks)
             ->create();
+
+        Task::all()->each(function ($task) {
+            $labels = Label::inRandomOrder()
+                ->limit(rand(1, Label::count()))
+                ->get();
+
+            $task->labels()->attach($labels);
+        });
     }
 }
