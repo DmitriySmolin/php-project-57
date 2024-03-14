@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
+use App\Models\Label;
 use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
@@ -36,7 +37,8 @@ class TaskController extends Controller
     {
         $taskStatuses = TaskStatus::all();
         $users = User::all();
-        return view('task.create', compact('taskStatuses', 'users'));
+        $labels = Label::all();
+        return view('task.create', compact('taskStatuses', 'users', 'labels'));
     }
 
     /**
@@ -69,7 +71,8 @@ class TaskController extends Controller
     {
         $taskStatuses = TaskStatus::all();
         $users = User::all();
-        return view('task.edit', compact('task', 'taskStatuses', 'users'));
+        $labels = Label::all();
+        return view('task.edit', compact('task', 'taskStatuses', 'users', 'labels'));
     }
 
     /**
