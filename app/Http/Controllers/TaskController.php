@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
+    private ?User $user;
+
     public function __construct()
     {
         $this->authorizeResource(Task::class);
@@ -52,6 +54,7 @@ class TaskController extends Controller
         $task->save();
         $labels = $request->input('labels');
         $task->labels()->sync($labels);
+
         flash(__('flash.tasks.store.success'))->success();
 
         return redirect()->route('tasks.index');
@@ -62,7 +65,8 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        return view('task.show', compact('task'));
+        $labels = $task->labels;
+        return view('task.show', compact('task', 'labels'));
     }
 
     /**
@@ -86,6 +90,7 @@ class TaskController extends Controller
         $task->save();
         $labels = $request->input('labels');
         $task->labels()->sync($labels);
+
         flash(__('flash.tasks.update.success'))->success();
 
         return redirect()->route('tasks.index');
