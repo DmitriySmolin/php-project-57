@@ -47,8 +47,7 @@ class TaskController extends Controller
     public function store(StoreTaskRequest $request)
     {
         $data = $request->validated();
-        $user = Auth::user();
-        $task = $user->createdTasks()->make($data);
+        $task = Auth::user()->createdTasks()->make($data);
         $task->save();
 
         flash(__('flash.tasks.store.success'))->success();
@@ -69,9 +68,9 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        $taskStatuses = TaskStatus::all();
-        $users = User::all();
-        $labels = Label::all();
+        $taskStatuses = TaskStatus::pluck('name', 'id');
+        $users = User::pluck('name', 'id');
+        $labels = Label::pluck('name', 'id');
         return view('task.edit', compact('task', 'taskStatuses', 'users', 'labels'));
     }
 
