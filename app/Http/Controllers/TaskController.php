@@ -16,6 +16,7 @@ class TaskController extends Controller
     public function __construct()
     {
         $this->authorizeResource(Task::class);
+        $this->user = Auth::user();
     }
 
     /**
@@ -47,9 +48,10 @@ class TaskController extends Controller
     public function store(StoreTaskRequest $request)
     {
         $data = $request->validated();
-        $task = Auth::user()->createdTasks()->make($data);
+        $task = $this->user->createdTasks()->make($data);
         $task->save();
-
+        $labels = $request->input('labels');
+        $task->labels()->sync($labels);
         flash(__('flash.tasks.store.success'))->success();
 
         return redirect()->route('tasks.index');
@@ -82,7 +84,8 @@ class TaskController extends Controller
         $data = $request->validated();
         $task->fill($data);
         $task->save();
-
+        $labels = $request->input('labels');
+        $task->labels()->sync($labels);
         flash(__('flash.tasks.update.success'))->success();
 
         return redirect()->route('tasks.index');
