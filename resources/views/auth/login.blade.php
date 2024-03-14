@@ -1,6 +1,6 @@
 <x-guest-layout>
     <h2 class="text-center">
-        <a href="{{ route('home') }}">{{ config('app.name', 'Менеджер задач') }}</a>
+        <a href="{{ route('home') }}">{{ config('app.name') }}</a>
     </h2>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')"/>
