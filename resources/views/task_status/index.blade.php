@@ -14,7 +14,9 @@
                 <th>{{ __('views.task_status.index.id') }}</th>
                 <th>{{ __('views.task_status.index.name') }}</th>
                 <th>{{ __('views.task_status.index.created_at') }}</th>
-                @auth<th>{{ __('views.task_status.index.actions') }}</th>@endauth
+                @auth
+                    <th>{{ __('views.task_status.index.actions') }}</th>
+                @endauth
             </tr>
             </thead>
             <tbody>

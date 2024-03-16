@@ -2,7 +2,8 @@ FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
     libpq-dev \
-    libzip-dev
+    libzip-dev \
+    make
 RUN docker-php-ext-install pdo pdo_pgsql zip
 
 
@@ -17,7 +18,8 @@ WORKDIR /app
 
 COPY . .
 RUN composer install
+RUN make fix-fakerphp
 RUN npm ci
 RUN npm run build
 
-CMD ["bash", "-c", "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT"]
+CMD ["bash", "-c", "php artisan migrate:fresh --seed --force && php artisan serve --host=0.0.0.0 --port=$PORT"]
