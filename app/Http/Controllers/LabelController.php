@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreLabelRequest;
-use App\Http\Requests\UpdateLabelRequest;
 use App\Models\Label;
 
 class LabelController extends Controller
@@ -63,7 +62,7 @@ class LabelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLabelRequest $request, Label $label)
+    public function update(StoreLabelRequest $request, Label $label)
     {
         $data = $request->validated();
         $label->fill($data);
