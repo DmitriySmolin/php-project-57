@@ -9,16 +9,14 @@ use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
-    private ?User $user;
-
     public function __construct()
     {
         $this->authorizeResource(Task::class);
-        $this->user = Auth::user();
     }
 
     /**
@@ -50,9 +48,9 @@ class TaskController extends Controller
     public function store(StoreTaskRequest $request)
     {
         $data = $request->validated();
-        $task = $this->user->createdTasks()->make($data);
+        $task = Auth::user()->createdTasks()->make($data);
         $task->save();
-        $labels = $request->input('labels');
+        $labels = Arr::whereNotNull($request->input('labels'));
         $task->labels()->sync($labels);
 
         flash(__('flash.tasks.store.success'))->success();
@@ -88,7 +86,7 @@ class TaskController extends Controller
         $data = $request->validated();
         $task->fill($data);
         $task->save();
-        $labels = $request->input('labels');
+        $labels = Arr::whereNotNull($request->input('labels'));
         $task->labels()->sync($labels);
 
         flash(__('flash.tasks.update.success'))->success();
