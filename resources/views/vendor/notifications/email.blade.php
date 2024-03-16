@@ -11,11 +11,11 @@
     </x-mail::button>
 
     {{-- Outro Lines --}}
-    {!! __('email.no_further_action', ['app_name' => config('app.name')]) !!}
+    {!! __('email.no_further_action', ['app_name' => __('header.app_name')]) !!}
 
     {{-- Salutation --}}
     {{ __('email.salutation') }}, <br>
-    {{ config('app.name') }}
+    {{ __('header.app_name') }}
 
     {{-- Subcopy --}}
     <x-slot:subcopy>

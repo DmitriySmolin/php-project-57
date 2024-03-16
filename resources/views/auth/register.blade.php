@@ -1,6 +1,6 @@
 <x-guest-layout>
     <h2 class="text-center">
-        <a href="{{ route('home') }}">{{ config('app.name') }}</a>
+        <a href="{{ route('home') }}">{{ __('header.app_name') }}</a>
     </h2>
     <!--Validation Errors-->
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
