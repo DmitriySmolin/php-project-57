@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class Task extends Model
 {
@@ -22,34 +24,37 @@ class Task extends Model
         'assigned_to_id',
     ];
 
+    /**
+     * Get status of the task
+     */
     public function status()
     {
         return $this->belongsTo(TaskStatus::class);
     }
 
+    /**
+     * Get the author of the task
+     */
     public function createdBy()
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Get the user that the task was assigned to
+     */
     public function assignedTo()
     {
         return $this->belongsTo(User::class);
     }
 
-    public static function filter($params)
+    public static function filter()
     {
-        $filterKeys = ['status_id', 'created_by_id', 'assigned_to_id'];
-
-        $query = self::query();
-
-        foreach ($filterKeys as $key) {
-            if (isset($params[$key])) {
-                $query->where($key, $params[$key]);
-            }
-        }
-
-        return $query;
+        return QueryBuilder::for(Task::class)->allowedFilters([
+            AllowedFilter::exact('status_id'),
+            AllowedFilter::exact('created_by_id'),
+            AllowedFilter::exact('assigned_to_id')
+        ]);
     }
 
     /**
