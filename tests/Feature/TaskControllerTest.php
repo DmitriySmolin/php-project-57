@@ -27,16 +27,19 @@ class TaskControllerTest extends TestCase
         $response->assertOk();
     }
 
-    public function testCreate(): void
+    public function testCreateForbiddenForGuest(): void
     {
         $response = $this->get(route('tasks.create'));
         $response->assertForbidden();
+    }
 
+    public function testCreateSuccessful(): void
+    {
         $response = $this->actingAs($this->user)->get(route('tasks.create'));
         $response->assertOk();
     }
 
-    public function testShow(): void
+    public function testShowSuccessful(): void
     {
         $task = Task::factory()->create();
         $response = $this->get(route('tasks.show', $task));
@@ -44,59 +47,80 @@ class TaskControllerTest extends TestCase
         $response->assertSee($task->name);
     }
 
-    public function testEdit(): void
+    public function testEditForbiddenForGuest(): void
     {
         $task = Task::factory()->create();
-
         $response = $this->get(route('tasks.edit', $task));
         $response->assertForbidden();
+    }
 
+    public function testEditSuccessful(): void
+    {
+        $task = Task::factory()->create();
         $response = $this->actingAs($this->user)->get(route('tasks.edit', $task));
         $response->assertOk();
         $response->assertSee($task->name);
     }
 
-    public function testStore(): void
+    public function testStoreForbiddenForGuest(): void
+    {
+        $data = Task::factory()->make()->only('name', 'status_id');
+        $response = $this->post(route('tasks.store', $data));
+        $response->assertForbidden();
+        $this->assertDatabaseMissing('tasks', $data);
+    }
+
+    public function testStoreSuccessful(): void
     {
         $data = Task::factory()->make()->only('name', 'status_id');
         $response = $this->actingAs($this->user)->post(route('tasks.store', $data));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-
         $this->assertDatabaseHas('tasks', $data);
     }
 
-    public function testUpdate(): void
+    public function testUpdateForbiddenForGuest(): void
     {
         $task = Task::factory()->create();
         $data = Task::factory()->make()->only('name', 'status_id');
-
         $response = $this->patch(route('tasks.update', $task), $data);
         $response->assertForbidden();
         $this->assertDatabaseMissing('tasks', $data);
+    }
 
+    public function testUpdateSuccessful(): void
+    {
+        $task = Task::factory()->create();
+        $data = Task::factory()->make()->only('name', 'status_id');
         $response = $this->actingAs($this->user)->patch(route('tasks.update', $task), $data);
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
         $this->assertDatabaseHas('tasks', $data);
     }
 
-    public function testDelete(): void
+    public function testDeleteForbiddenForGuest(): void
     {
-        $taskToKeep = Task::factory()->create();
-        $response = $this->delete(route('tasks.destroy', $taskToKeep));
+        $task = Task::factory()->create();
+        $response = $this->delete(route('tasks.destroy', $task));
         $response->assertForbidden();
-        $this->assertDatabaseHas('tasks', ['id' => $taskToKeep->id]);
+        $this->assertDatabaseHas('tasks', ['id' => $task->id]);
+    }
 
+    public function testDeleteFailsIfNotCreator(): void
+    {
+        $task = Task::factory()->create();
         $anotherUser = User::factory()->create();
-        $response = $this->actingAs($anotherUser)->delete(route('tasks.destroy', $taskToKeep));
+        $response = $this->actingAs($anotherUser)->delete(route('tasks.destroy', $task));
         $response->assertForbidden();
-        $this->assertDatabaseHas('tasks', ['id' => $taskToKeep->id]);
+        $this->assertDatabaseHas('tasks', ['id' => $task->id]);
+    }
 
-        $taskToDelete = Task::factory()->for($this->user, 'createdBy')->create();
-        $response = $this->actingAs($this->user)->delete(route('tasks.destroy', $taskToDelete));
+    public function testDeleteSuccessful(): void
+    {
+        $task = Task::factory()->for($this->user, 'createdBy')->create();
+        $response = $this->actingAs($this->user)->delete(route('tasks.destroy', $task));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-        $this->assertDatabaseMissing('tasks', ['id' => $taskToDelete->id]);
+        $this->assertDatabaseMissing('tasks', ['id' => $task->id]);
     }
 }

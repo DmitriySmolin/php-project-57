@@ -22,4 +22,4 @@ RUN make fix-fakerphp
 RUN npm ci
 RUN npm run build
 
-CMD ["bash", "-c", "php artisan migrate:fresh --seed --force && php artisan serve --host=0.0.0.0 --port=$PORT"]
+CMD ["bash", "-c", "php artisan serve --host=0.0.0.0 --port=$PORT"]

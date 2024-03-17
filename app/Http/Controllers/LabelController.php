@@ -44,14 +44,6 @@ class LabelController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Label $label)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Label $label)
@@ -80,7 +72,7 @@ class LabelController extends Controller
     {
         if ($label->tasks()->exists()) {
             flash(__('flash.labels.delete.error'))->error();
-            back();
+            return back();
         }
 
         $label->delete();

@@ -11,16 +11,19 @@
     </testsuites>
     <source>
         <include>
-            <directory>app</directory>
+            <directory>app/Http/Controllers</directory>
+            <directory>app/Http/Requests</directory>
+            <directory>app/Models</directory>
+            <directory>app/Policies</directory>
+            <directory>database/factories</directory>
         </include>
     </source>
     <php>
         <env name="APP_ENV" value="testing"/>
-        <env name="APP_ENV" value="base64:8OICQvZ5Jf5+z6SkC5F72UbdAT2XlvGWFMzCLsKIRhg="/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="CACHE_DRIVER" value="array"/>
-         <env name="DB_CONNECTION" value="pgsql"/>
-         <env name="DB_DATABASE" value="task-manager"/>
+<!--        <env name="DB_CONNECTION" value="sqlite"/>-->
+<!--        <env name="DB_DATABASE" value=":memory:"/>-->
         <env name="MAIL_MAILER" value="array"/>
         <env name="PULSE_ENABLED" value="false"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
