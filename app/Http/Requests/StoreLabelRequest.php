@@ -51,7 +51,6 @@ class StoreLabelRequest extends FormRequest
     {
         return [
             'name' => __('validation.attributes.label'),
-            'description' => __('validation.attributes.description'),
         ];
     }
 }
