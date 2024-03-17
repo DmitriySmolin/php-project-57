@@ -43,6 +43,7 @@
     39 => 'App\\Providers\\RouteServiceProvider',
     40 => 'Sentry\\Laravel\\ServiceProvider',
     41 => 'Laracasts\\Flash\\FlashServiceProvider',
+    42 => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
   ),
   'eager' => 
   array (
