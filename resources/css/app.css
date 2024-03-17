@@ -10,10 +10,20 @@ h2 {
     font-size: 2rem;
 }
 
+.alert {
+    border-width: 0.8px;
+    border-radius: 6px;
+    padding: 16px;
+}
+
 .alert-success {
     background-color: #bbf7d0;
+    border-color: #a3cfbb;
+    color: #0a3622;
 }
 
 .alert-danger {
     background-color: #fecdd3;
+    border-color: #f1aeb5;
+    color: #58151c;
 }
