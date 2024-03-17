@@ -68,14 +68,6 @@ class Task extends Model
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Get the user that the task was assigned to
-     */
-    public function assignedTo()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public static function filter()
     {
         return QueryBuilder::for(Task::class)->allowedFilters([
@@ -91,5 +83,13 @@ class Task extends Model
     public function labels()
     {
         return $this->belongsToMany(Label::class);
+    }
+
+    /**
+     * Get the user that the task was assigned to
+     */
+    public function assignedTo()
+    {
+        return $this->belongsTo(User::class);
     }
 }

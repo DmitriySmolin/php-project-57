@@ -44,14 +44,6 @@ class TaskStatusController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(TaskStatus $taskStatus)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(TaskStatus $taskStatus)

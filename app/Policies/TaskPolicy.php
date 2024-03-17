@@ -47,20 +47,4 @@ class TaskPolicy
     {
         return $task->createdBy()->is($user);
     }
-
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Task $task): bool
-    {
-        return Auth::check();
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Task $task): bool
-    {
-        return Auth::check();
-    }
 }
