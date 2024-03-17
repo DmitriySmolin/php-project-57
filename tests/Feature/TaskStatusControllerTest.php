@@ -2,12 +2,10 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use App\Models\{
-    User,
-    TaskStatus
-};
+use App\Models\User;
+use App\Models\TaskStatus;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TaskStatusControllerTest extends TestCase
 {
@@ -19,7 +17,6 @@ class TaskStatusControllerTest extends TestCase
     {
         parent::setUp();
         $this->user = User::factory()->create();
-        //TaskStatus::factory()->count(10)->create();
     }
 
     public function testIndex(): void
@@ -40,8 +37,10 @@ class TaskStatusControllerTest extends TestCase
     public function testEdit(): void
     {
         $taskStatus = TaskStatus::factory()->create();
+
         $response = $this->get(route('task_statuses.edit', $taskStatus));
         $response->assertForbidden();
+
         $response = $this->actingAs($this->user)->get(route('task_statuses.edit', $taskStatus));
         $response->assertOk();
     }
@@ -53,21 +52,22 @@ class TaskStatusControllerTest extends TestCase
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('task_statuses', (array) $data);
+        $this->assertDatabaseHas('task_statuses', $data);
     }
 
     public function testUpdate(): void
     {
         $taskStatus = TaskStatus::factory()->create();
         $data = TaskStatus::factory()->make()->only('name');
-        $response = $this->patch(route('task_statuses.update', $taskStatus), (array) $data);
+
+        $response = $this->patch(route('task_statuses.update', $taskStatus), $data);
         $response->assertForbidden();
-        $this->assertDatabaseMissing('task_statuses', (array) $data);
-        $response = $this->actingAs($this->user)->patch(route('task_statuses.update', $taskStatus), (array) $data);
+        $this->assertDatabaseMissing('task_statuses', $data);
+
+        $response = $this->actingAs($this->user)->patch(route('task_statuses.update', $taskStatus), $data);
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-
-        $this->assertDatabaseHas('task_statuses', (array) $data);
+        $this->assertDatabaseHas('task_statuses', $data);
     }
 
     public function testDelete(): void
