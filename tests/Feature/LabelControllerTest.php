@@ -75,12 +75,12 @@ class LabelControllerTest extends TestCase
         $labelToKeep = Label::factory()->create();
         $response = $this->delete(route('labels.destroy', $labelToKeep));
         $response->assertForbidden();
-        $this->assertDatabaseHas('labels', ['id' => (array) $labelToKeep['id']]);
+        $this->assertDatabaseHas('labels', ['id' => $labelToKeep->id]);
 
         $labelToDelete = Label::factory()->create();
         $response = $this->actingAs($this->user)->delete(route('labels.destroy', $labelToDelete));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-        $this->assertDatabaseMissing('labels', ['id' => (array) $labelToDelete['id']]);
+        $this->assertDatabaseMissing('labels', ['id' => $labelToDelete->id]);
     }
 }
