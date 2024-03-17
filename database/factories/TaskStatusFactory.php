@@ -17,7 +17,7 @@ class TaskStatusFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->unique()->word(3, true),
+            'name' => fake()->unique()->words(3, true),
             'created_at' => now(),
             'updated_at' => now(),
         ];

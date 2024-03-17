@@ -52,7 +52,7 @@ class LabelControllerTest extends TestCase
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('labels', (array) $data);
+        $this->assertDatabaseHas('labels', $data);
     }
 
     public function testUpdate(): void
@@ -60,14 +60,14 @@ class LabelControllerTest extends TestCase
         $label = Label::factory()->create();
         $data = Label::factory()->make()->only('name');
 
-        $response = $this->patch(route('labels.update', $label), (array) $data);
+        $response = $this->patch(route('labels.update', $label), $data);
         $response->assertForbidden();
-        $this->assertDatabaseMissing('labels', (array) $data);
+        $this->assertDatabaseMissing('labels', $data);
 
-        $response = $this->actingAs($this->user)->patch(route('labels.update', $label), (array) $data);
+        $response = $this->actingAs($this->user)->patch(route('labels.update', $label), $data);
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-        $this->assertDatabaseHas('labels', (array) $data);
+        $this->assertDatabaseHas('labels', $data);
     }
 
     public function testDelete(): void
