@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use App\Models\TaskStatus;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\TaskStatus;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TaskControllerTest extends TestCase
@@ -63,7 +63,7 @@ class TaskControllerTest extends TestCase
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('tasks', (array)$data);
+        $this->assertDatabaseHas('tasks', $data);
     }
 
     public function testUpdate(): void
@@ -71,14 +71,14 @@ class TaskControllerTest extends TestCase
         $task = Task::factory()->create();
         $data = Task::factory()->make()->only('name', 'status_id');
 
-        $response = $this->patch(route('tasks.update', $task), (array)$data);
+        $response = $this->patch(route('tasks.update', $task), $data);
         $response->assertForbidden();
-        $this->assertDatabaseMissing('tasks', (array)$data);
+        $this->assertDatabaseMissing('tasks', $data);
 
-        $response = $this->actingAs($this->user)->patch(route('tasks.update', $task), (array)$data);
+        $response = $this->actingAs($this->user)->patch(route('tasks.update', $task), $data);
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-        $this->assertDatabaseHas('tasks', (array)$data);
+        $this->assertDatabaseHas('tasks', $data);
     }
 
     public function testDelete(): void
@@ -86,17 +86,17 @@ class TaskControllerTest extends TestCase
         $taskToKeep = Task::factory()->create();
         $response = $this->delete(route('tasks.destroy', $taskToKeep));
         $response->assertForbidden();
-        $this->assertDatabaseHas('tasks', ['id' => (array)$taskToKeep['id']]);
+        $this->assertDatabaseHas('tasks', ['id' => (array) $taskToKeep['id']]);
 
         $anotherUser = User::factory()->create();
         $response = $this->actingAs($anotherUser)->delete(route('tasks.destroy', $taskToKeep));
         $response->assertForbidden();
-        $this->assertDatabaseHas('tasks', ['id' => (array)$taskToKeep['id']]);
+        $this->assertDatabaseHas('tasks', ['id' => (array) $taskToKeep['id']]);
 
         $taskToDelete = Task::factory()->for($this->user, 'createdBy')->create();
         $response = $this->actingAs($this->user)->delete(route('tasks.destroy', $taskToDelete));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-        $this->assertDatabaseMissing('tasks', ['id' => (array)$taskToDelete['id']]);
+        $this->assertDatabaseMissing('tasks', ['id' => (array) $taskToDelete['id']]);
     }
 }
