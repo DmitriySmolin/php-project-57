@@ -13,7 +13,7 @@ class LabelSeeder extends Seeder
      */
     public function run(): void
     {
-        $tasks = json_decode(file_get_contents(database_path('labels.json')), true);
+        $tasks = Yaml::parseFile(database_path('labels.yaml'));
         Label::factory(count($tasks))
             ->sequence(...$tasks)
             ->create();
