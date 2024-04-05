@@ -24,7 +24,8 @@ use Laracasts\Flash\Flash;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('home');;
+})->name('home');
+;
 
 require __DIR__ . '/auth.php';
 

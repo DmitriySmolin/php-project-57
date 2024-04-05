@@ -27,10 +27,10 @@ validate:
 	composer validate
 
 lint:
-	composer exec phpcs -v
+	composer exec --verbose phpcs -- --standard=PSR12  tests/ app/ routes/
 
 lint-fix:
-	composer exec phpcbf
+	composer exec --verbose phpcbf -- --standard=PSR12  tests/ app/ routes/
 
 test:
 	php artisan test
