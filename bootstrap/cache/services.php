@@ -44,6 +44,7 @@
     40 => 'Sentry\\Laravel\\ServiceProvider',
     41 => 'Laracasts\\Flash\\FlashServiceProvider',
     42 => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
+    43 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
   ),
   'eager' => 
   array (
@@ -72,6 +73,7 @@
     22 => 'App\\Providers\\RouteServiceProvider',
     23 => 'Sentry\\Laravel\\ServiceProvider',
     24 => 'Laracasts\\Flash\\FlashServiceProvider',
+    25 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
   ),
   'deferred' => 
   array (

@@ -171,6 +171,7 @@ return [
         Sentry\Laravel\ServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        NunoMaduro\Collision\Adapters\Laravel\CollisionServiceProvider::class,
     ])->toArray(),
 
     /*
