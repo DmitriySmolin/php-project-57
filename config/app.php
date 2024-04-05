@@ -172,6 +172,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         NunoMaduro\Collision\Adapters\Laravel\CollisionServiceProvider::class,
+        Spatie\LaravelIgnition\IgnitionServiceProvider::class,
     ])->toArray(),
 
     /*
