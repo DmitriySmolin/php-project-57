@@ -7,7 +7,7 @@ return [
         'password' => 'пароль',
         'status' => 'статус',
         'task' => 'задача',
-        'label' => 'метка',
+        'labels' => 'метка',
         'description' => 'описание',
     ],
     'confirmed' => ':Attribute и подтверждение не совпадают',

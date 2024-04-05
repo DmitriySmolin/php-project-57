@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 10.39.0.
+ * Generated for Laravel 10.38.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -9650,17 +9650,6 @@ namespace Illuminate\Support\Facades {
                         return $instance->setConnectionName($name);
         }
                     /**
-         * Get the maximum number of attempts for an object-based queue handler.
-         *
-         * @param mixed $job
-         * @return mixed 
-         * @static 
-         */        public static function getJobTries($job)
-        {            //Method inherited from \Illuminate\Queue\Queue         
-                        /** @var \Illuminate\Queue\SyncQueue $instance */
-                        return $instance->getJobTries($job);
-        }
-                    /**
          * Get the backoff for an object-based queue handler.
          *
          * @param mixed $job
@@ -18830,10 +18819,12 @@ namespace Illuminate\Console\Scheduling {
          * @param int|null $checkInMargin
          * @param int|null $maxRuntime
          * @param bool $updateMonitorConfig
+         * @param int|null $failureIssueThreshold
+         * @param int|null $recoveryThreshold
          * @static 
-         */        public static function sentryMonitor($monitorSlug = null, $checkInMargin = null, $maxRuntime = null, $updateMonitorConfig = true)
+         */        public static function sentryMonitor($monitorSlug = null, $checkInMargin = null, $maxRuntime = null, $updateMonitorConfig = true, $failureIssueThreshold = null, $recoveryThreshold = null)
         {
-                        return \Illuminate\Console\Scheduling\Event::sentryMonitor($monitorSlug, $checkInMargin, $maxRuntime, $updateMonitorConfig);
+                        return \Illuminate\Console\Scheduling\Event::sentryMonitor($monitorSlug, $checkInMargin, $maxRuntime, $updateMonitorConfig, $failureIssueThreshold, $recoveryThreshold);
         }
             }
     }

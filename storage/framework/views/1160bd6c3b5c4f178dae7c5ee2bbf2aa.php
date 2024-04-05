@@ -9,7 +9,7 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
     <h2 class="text-center">
-        <a href="<?php echo e(route('home')); ?>"><?php echo e(config('app.name', 'Менеджер задач')); ?></a>
+        <a href="<?php echo e(route('home')); ?>"><?php echo e(__('header.app_name')); ?></a>
     </h2>
     <!-- Session Status -->
     <?php if (isset($component)) { $__componentOriginal7c1bf3a9346f208f66ee83b06b607fb5 = $component; } ?>

@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "barryvdh/laravel-ide-helper": "^3.0",
         "doctrine/dbal": "*",
         "guzzlehttp/guzzle": "^7.2",
         "laracasts/flash": "^3.2",
@@ -18,7 +19,6 @@
         "symfony/yaml": "^6.4"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "^3.0",
         "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "^1.28",
         "laravel/pint": "^1.0",

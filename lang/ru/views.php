@@ -29,12 +29,12 @@ return [
         ],
         'create' => [
             'header' => 'Создать статус',
-            'label' => 'Имя',
+            'labels' => 'Имя',
             'button' => 'Создать',
         ],
         'edit' => [
             'header' => 'Изменение статуса',
-            'label' => 'Имя',
+            'labels' => 'Имя',
             'button' => 'Обновить',
         ],
     ],
@@ -80,7 +80,7 @@ return [
             'labels' => 'Метки:',
         ],
     ],
-    'label' => [
+    'labels' => [
         'index' => [
             'header' => 'Метки',
             'create' => 'Создать метку',

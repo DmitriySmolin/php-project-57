@@ -50,7 +50,7 @@ class StoreLabelRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'name' => __('validation.attributes.label'),
+            'name' => __('validation.attributes.labels'),
         ];
     }
 }
