@@ -41,12 +41,6 @@
     37 => 'App\\Providers\\AuthServiceProvider',
     38 => 'App\\Providers\\EventServiceProvider',
     39 => 'App\\Providers\\RouteServiceProvider',
-    40 => 'Sentry\\Laravel\\ServiceProvider',
-    41 => 'Laracasts\\Flash\\FlashServiceProvider',
-    42 => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
-    43 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    44 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
-    45 => 'Laravel\\Breeze\\BreezeServiceProvider',
   ),
   'eager' => 
   array (
@@ -73,10 +67,6 @@
     20 => 'App\\Providers\\AuthServiceProvider',
     21 => 'App\\Providers\\EventServiceProvider',
     22 => 'App\\Providers\\RouteServiceProvider',
-    23 => 'Sentry\\Laravel\\ServiceProvider',
-    24 => 'Laracasts\\Flash\\FlashServiceProvider',
-    25 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    26 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
   ),
   'deferred' => 
   array (
