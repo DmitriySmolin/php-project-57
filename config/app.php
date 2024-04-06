@@ -168,12 +168,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Sentry\Laravel\ServiceProvider::class,
-        Laracasts\Flash\FlashServiceProvider::class,
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        NunoMaduro\Collision\Adapters\Laravel\CollisionServiceProvider::class,
-        Spatie\LaravelIgnition\IgnitionServiceProvider::class,
-        Laravel\Breeze\BreezeServiceProvider::class,
     ])->toArray(),
 
     /*
