@@ -174,6 +174,7 @@ return [
         NunoMaduro\Collision\Adapters\Laravel\CollisionServiceProvider::class,
         Spatie\LaravelIgnition\IgnitionServiceProvider::class,
         Laravel\Breeze\BreezeServiceProvider::class,
+        Laravel\Sail\SailServiceProvider::class,
     ])->toArray(),
 
     /*

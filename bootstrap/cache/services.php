@@ -47,6 +47,7 @@
     43 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     44 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
     45 => 'Laravel\\Breeze\\BreezeServiceProvider',
+    46 => 'Laravel\\Sail\\SailServiceProvider',
   ),
   'eager' => 
   array (
