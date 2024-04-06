@@ -38,4 +38,23 @@ test:
 test-coverage:
 	XDEBUG_MODE=coverage php artisan test --coverage-clover ./build/logs/clover.xml
 
+compose:
+	docker-compose up
 
+compose-test:
+	docker-compose run web make test
+
+compose-bash:
+	docker-compose run web bash
+
+compose-setup: compose-build
+	docker-compose run web make setup
+
+compose-build:
+	docker-compose build
+
+compose-db:
+	docker-compose exec db psql -U postgres
+
+compose-down:
+	docker-compose down -v
