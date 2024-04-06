@@ -46,6 +46,7 @@
     42 => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
     43 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     44 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
+    45 => 'Laravel\\Breeze\\BreezeServiceProvider',
   ),
   'eager' => 
   array (
