@@ -80,7 +80,7 @@ return [
             'labels' => 'Метки:',
         ],
     ],
-    'labels' => [
+    'label' => [
         'index' => [
             'header' => 'Метки',
             'create' => 'Создать метку',
