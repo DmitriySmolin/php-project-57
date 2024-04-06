@@ -170,6 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Sentry\Laravel\ServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ])->toArray(),
 
     /*
