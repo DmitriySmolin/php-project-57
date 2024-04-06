@@ -24,6 +24,5 @@ $ cd php-project-57
 $ make setup
 ```
 
-
 ## Deploy
-## [task-manager](https://hexlet-task-manager-3uop.onrender.com/) 
+## [task-manager](https://task-manager-wlnd.onrender.com/) 
