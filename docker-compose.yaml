@@ -1,0 +1,84 @@
+version: '3'
+services:
+    laravel.test:
+        build:
+            context: ./vendor/laravel/sail/runtimes/8.2
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+        image: sail-8.2/app
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        ports:
+            #            - '${APP_PORT:-80}:80'
+            - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
+        environment:
+            WWWUSER: '${WWWUSER}'
+            LARAVEL_SAIL: 1
+            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
+            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - laravel_test_sail
+        depends_on:
+            - pgsql
+    pgsql:
+        image: 'postgres:15'
+        ports:
+            - '${DB_PORT:-5432}:5432'
+        environment:
+            PGPASSWORD: '${DB_PASSWORD:-secret}'
+            POSTGRES_DB: '${DB_DATABASE}'
+            POSTGRES_USER: '${DB_USERNAME}'
+            POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+        volumes:
+            - 'sail-pgsql:/var/lib/postgresql/data'
+            - './vendor/laravel/sail/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'
+        networks:
+            - laravel_test_sail
+        healthcheck:
+            test:
+                - CMD
+                - pg_isready
+                - '-q'
+                - '-d'
+                - '${DB_DATABASE}'
+                - '-U'
+                - '${DB_USERNAME}'
+            retries: 3
+            timeout: 5s
+    caddy:
+        build:
+            context: "./Docker/Caddy"
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: "${WWWGROUP}"
+        restart: unless-stopped
+        ports:
+            - "${APP_PORT:-80}:80"
+            - "${APP_SSL_PORT:-443}:443"
+        environment:
+            LARAVEL_SAIL: 1
+            HOST_DOMAIN: laravel.test
+        volumes:
+            - "./Docker/Caddy/file:/etc/caddy"
+            - ".:/srv:cache"
+            - "./Docker/Caddy/certificates:/data/caddy/certificates/local"
+            - "./Docker/Caddy/authorities:/data/caddy/pki/authorities/local"
+            - "sailcaddy:/data:cache"
+            - "sailcaddyconfig:/config:cache"
+        networks:
+            - laravel_test_sail
+        depends_on:
+            - laravel.test
+networks:
+    laravel_test_sail:
+        driver: bridge
+volumes:
+    sail-pgsql:
+        driver: local
+    sailcaddy:
+        driver: local
+    sailcaddyconfig:
+        driver: local
