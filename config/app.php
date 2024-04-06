@@ -173,6 +173,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         NunoMaduro\Collision\Adapters\Laravel\CollisionServiceProvider::class,
         Spatie\LaravelIgnition\IgnitionServiceProvider::class,
+        Laravel\Breeze\BreezeServiceProvider::class,
     ])->toArray(),
 
     /*
