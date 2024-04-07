@@ -32,6 +32,9 @@ lint:
 lint-fix:
 	composer exec --verbose phpcbf -- --standard=PSR12  tests/ app/ routes/ lang/ database/
 
+phpstan:
+	vendor/bin/phpstan analyse tests/ app/ lang/ database/ src/
+
 test:
 	php artisan test
 
