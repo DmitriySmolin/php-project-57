@@ -23,10 +23,11 @@
                 </div>
                 {{ Form::close() }}
             </div>
+
             @auth
                 <div class="ml-auto">
                     <x-link-button route="{{ route('tasks.create') }}" text="{{ __('views.task.index.create_task') }}"
-                                   class="ml-2" />
+                                   class="ml-2"/>
                 </div>
             @endauth
         </div>
@@ -51,7 +52,7 @@
                     <td>{{ $task->id }}</td>
                     <td>{{ $task->status->name }}</td>
                     <td>
-                        <x-link-blue route="{{ route('tasks.show', $task->id) }}" text="{{ $task->name }}" />
+                        <x-link-blue route="{{ route('tasks.show', $task->id) }}" text="{{ $task->name }}"/>
                     </td>
                     <td>{{ $task->createdBy->name }}</td>
                     <td>{{ optional($task->assignedTo)->name }}</td>
@@ -61,10 +62,10 @@
                             @can('delete', $task)
                                 <x-link-red route="{{ route('tasks.destroy', $task->id) }}"
                                             confirm="{{ __('views.actions.delete_confirm') }}"
-                                            text="{{ __('views.actions.delete') }}" />
+                                            text="{{ __('views.actions.delete') }}"/>
                             @endcan
                             <x-link-blue route="{{ route('tasks.edit', $task->id) }}"
-                                         text="{{ __('views.actions.edit') }}" />
+                                         text="{{ __('views.actions.edit') }}"/>
                         </td>
                     @endauth
                 </tr>

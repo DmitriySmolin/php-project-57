@@ -27,6 +27,7 @@
                 <?php echo e(Form::close()); ?>
 
             </div>
+
             <?php if(auth()->guard()->check()): ?>
                 <div class="ml-auto">
                     <?php if (isset($component)) { $__componentOriginalfb5b48b69fbd6989c24c2377cf6cf379 = $component; } ?>

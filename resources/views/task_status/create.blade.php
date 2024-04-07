@@ -6,8 +6,8 @@
 
         {{ Form::open(['route' => 'task_statuses.store', 'class' => 'w-50']) }}
         <div class="flex flex-col">
-            <x-input-name label="{{ __('views.task_status.create.name') }}" />
-            <x-submit-button caption="{{ __('views.task_status.create.button') }}" />
+            <x-input-name label="{{ __('views.task_status.create.name') }}"/>
+            <x-submit-button caption="{{ __('views.task_status.create.button') }}"/>
         </div>
         {{ Form::close() }}
     </div>

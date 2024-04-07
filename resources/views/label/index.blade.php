@@ -5,7 +5,7 @@
         <h1 class="mb-5">{{ __('views.label.index.header') }}</h1>
         @auth
             <div>
-                <x-link-button route="{{ route('labels.create') }}" text="{{ __('views.label.index.create') }}" />
+                <x-link-button route="{{ route('labels.create') }}" text="{{ __('views.label.index.create') }}"/>
             </div>
         @endauth
         <table class="mt-4">
@@ -15,7 +15,9 @@
                 <th>{{ __('views.label.index.name') }}</th>
                 <th>{{ __('views.label.index.description') }}</th>
                 <th>{{ __('views.label.index.created_at') }}</th>
-                @auth<th>{{ __('views.label.index.actions') }}</th>@endauth
+                @auth
+                    <th>{{ __('views.label.index.actions') }}</th>
+                @endauth
             </tr>
             </thead>
             <tbody>
@@ -24,15 +26,14 @@
                     <td>{{ $label->id }}</td>
                     <td>{{ $label->name }}</td>
                     <td>{{ $label->description }}</td>
-                    <td>{{ $label->created_at}}</td>
                     <td>{{ $label->created_at->format('d.m.Y') }}</td>
                     @auth
                         <td>
                             <x-link-red route="{{ route('labels.destroy', $label->id) }}"
                                         confirm="{{ __('views.actions.delete_confirm') }}"
-                                        text="{{ __('views.actions.delete') }}" />
+                                        text="{{ __('views.actions.delete') }}"/>
                             <x-link-blue route="{{ route('labels.edit', $label->id) }}"
-                                         text="{{ __('views.actions.edit') }}" />
+                                         text="{{ __('views.actions.edit') }}"/>
                         </td>
                     @endauth
                 </tr>

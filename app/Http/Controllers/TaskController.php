@@ -25,8 +25,8 @@ class TaskController extends Controller
     {
         $filter = $request->input('filter');
         $tasks = Task::filter()->orderBy('id')->paginate();
-        $taskStatusesById = TaskStatus::all()->pluck('name', 'id');
-        $usersById = User::all()->pluck('name', 'id');
+        $taskStatusesById = TaskStatus::pluck('name', 'id');
+        $usersById = User::pluck('name', 'id');
         return view('task.index', compact('tasks', 'taskStatusesById', 'usersById', 'filter'));
     }
 
@@ -62,8 +62,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        $labels = $task->labels;
-        return view('task.show', compact('task', 'labels'));
+        return view('task.show', compact('task'));
     }
 
     /**

@@ -32,7 +32,9 @@
                 <th><?php echo e(__('views.label.index.name')); ?></th>
                 <th><?php echo e(__('views.label.index.description')); ?></th>
                 <th><?php echo e(__('views.label.index.created_at')); ?></th>
-                <?php if(auth()->guard()->check()): ?><th><?php echo e(__('views.label.index.actions')); ?></th><?php endif; ?>
+                <?php if(auth()->guard()->check()): ?>
+                    <th><?php echo e(__('views.label.index.actions')); ?></th>
+                <?php endif; ?>
             </tr>
             </thead>
             <tbody>
@@ -41,7 +43,6 @@
                     <td><?php echo e($label->id); ?></td>
                     <td><?php echo e($label->name); ?></td>
                     <td><?php echo e($label->description); ?></td>
-                    <td><?php echo e($label->created_at); ?></td>
                     <td><?php echo e($label->created_at->format('d.m.Y')); ?></td>
                     <?php if(auth()->guard()->check()): ?>
                         <td>

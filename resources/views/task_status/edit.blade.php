@@ -6,8 +6,8 @@
 
         {{ Form::model($taskStatus, ['route' => ['task_statuses.update', $taskStatus], 'method' => 'PATCH', 'class' => 'w-50']) }}
         <div class="flex flex-col">
-            <x-input-name label="{{ __('views.task_status.edit.name') }}" />
-            <x-submit-button caption="{{ __('views.task_status.create.button') }}" />
+            <x-input-name label="{{ __('views.task_status.edit.name') }}"/>
+            <x-submit-button caption="{{ __('views.task_status.edit.button') }}"/>
         </div>
         {{ Form::close() }}
     </div>
