@@ -7,7 +7,6 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Symfony\Component\Yaml\Yaml;
 
-
 class TaskStatusSeeder extends Seeder
 {
     /**
