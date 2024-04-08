@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Label;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\TaskStatus;
@@ -9,14 +10,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TaskStatusControllerTest extends TestCase
 {
-    use RefreshDatabase;
-
     private User $user;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->user = User::factory()->create();
+        Label::factory(5)->create();
     }
 
     public function testIndex(): void
@@ -100,7 +100,7 @@ class TaskStatusControllerTest extends TestCase
         $taskStatus = TaskStatus::factory()->hasTasks(1)->create();
         $response = $this->actingAs($this->user)->delete(route('task_statuses.destroy', $taskStatus));
         $response->assertRedirect();
-        $this->assertDatabaseHas('task_statuses', ['id' => $taskStatus->id]);
+        $this->assertModelExists($taskStatus);
     }
 
     public function testDeleteSuccessful(): void
@@ -109,6 +109,6 @@ class TaskStatusControllerTest extends TestCase
         $response = $this->actingAs($this->user)->delete(route('task_statuses.destroy', $taskStatus));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-        $this->assertDatabaseMissing('task_statuses', ['id' => $taskStatus->id]);
+        $this->assertModelMissing($taskStatus);
     }
 }

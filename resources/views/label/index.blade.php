@@ -3,11 +3,11 @@
 @section('content')
     <div class="grid col-span-full">
         <h1 class="mb-5">{{ __('views.label.index.header') }}</h1>
-        @auth
+        @can('create', App\Models\Label::class)
             <div>
                 <x-link-button route="{{ route('labels.create') }}" text="{{ __('views.label.index.create') }}"/>
             </div>
-        @endauth
+        @endcan
         <table class="mt-4">
             <thead class="border-b-2 border-solid border-black text-left">
             <tr>
@@ -29,11 +29,15 @@
                     <td>{{ $label->created_at->format('d.m.Y') }}</td>
                     @auth
                         <td>
-                            <x-link-red route="{{ route('labels.destroy', $label->id) }}"
-                                        confirm="{{ __('views.actions.delete_confirm') }}"
-                                        text="{{ __('views.actions.delete') }}"/>
-                            <x-link-blue route="{{ route('labels.edit', $label->id) }}"
-                                         text="{{ __('views.actions.edit') }}"/>
+                            @can('delete', $label)
+                                <x-link-red route="{{ route('labels.destroy', $label->id) }}"
+                                            confirm="{{ __('views.actions.delete_confirm') }}"
+                                            text="{{ __('views.actions.delete') }}"/>
+                            @endcan
+                            @can('update', $label)
+                                <x-link-blue route="{{ route('labels.edit', $label->id) }}"
+                                             text="{{ __('views.actions.edit') }}"/>
+                            @endcan
                         </td>
                     @endauth
                 </tr>

@@ -28,7 +28,7 @@
 
             </div>
 
-            <?php if(auth()->guard()->check()): ?>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create', App\Models\Task::class)): ?>
                 <div class="ml-auto">
                     <?php if (isset($component)) { $__componentOriginalfb5b48b69fbd6989c24c2377cf6cf379 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalfb5b48b69fbd6989c24c2377cf6cf379 = $attributes; } ?>
@@ -122,7 +122,8 @@
 <?php unset($__componentOriginalf6dac73e63bbf44706bb0ec50aef1094); ?>
 <?php endif; ?>
                             <?php endif; ?>
-                            <?php if (isset($component)) { $__componentOriginal5daea5316faef6d36271d46477571114 = $component; } ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('update', $task)): ?>
+                                <?php if (isset($component)) { $__componentOriginal5daea5316faef6d36271d46477571114 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal5daea5316faef6d36271d46477571114 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.link-blue','data' => ['route' => ''.e(route('tasks.edit', $task->id)).'','text' => ''.e(__('views.actions.edit')).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('link-blue'); ?>
@@ -142,6 +143,7 @@
 <?php $component = $__componentOriginal5daea5316faef6d36271d46477571114; ?>
 <?php unset($__componentOriginal5daea5316faef6d36271d46477571114); ?>
 <?php endif; ?>
+                            <?php endif; ?>
                         </td>
                     <?php endif; ?>
                 </tr>

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Label;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Task;
@@ -10,8 +11,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TaskControllerTest extends TestCase
 {
-    use RefreshDatabase;
-
     private User $user;
 
     protected function setUp(): void
@@ -19,6 +18,7 @@ class TaskControllerTest extends TestCase
         parent::setUp();
         $this->user = User::factory()->create();
         TaskStatus::factory(5)->create();
+        Label::factory(5)->create();
     }
 
     public function testIndex(): void
@@ -112,7 +112,7 @@ class TaskControllerTest extends TestCase
         $anotherUser = User::factory()->create();
         $response = $this->actingAs($anotherUser)->delete(route('tasks.destroy', $task));
         $response->assertForbidden();
-        $this->assertDatabaseHas('tasks', ['id' => $task->id]);
+        $this->assertModelExists($task);
     }
 
     public function testDeleteSuccessful(): void
@@ -121,6 +121,6 @@ class TaskControllerTest extends TestCase
         $response = $this->actingAs($this->user)->delete(route('tasks.destroy', $task));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-        $this->assertDatabaseMissing('tasks', ['id' => $task->id]);
+        $this->assertModelMissing($task);
     }
 }

@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
     <div class="grid col-span-full">
         <h1 class="mb-5"><?php echo e(__('views.label.index.header')); ?></h1>
-        <?php if(auth()->guard()->check()): ?>
+        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create', App\Models\Label::class)): ?>
             <div>
                 <?php if (isset($component)) { $__componentOriginalfb5b48b69fbd6989c24c2377cf6cf379 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalfb5b48b69fbd6989c24c2377cf6cf379 = $attributes; } ?>
@@ -46,7 +46,8 @@
                     <td><?php echo e($label->created_at->format('d.m.Y')); ?></td>
                     <?php if(auth()->guard()->check()): ?>
                         <td>
-                            <?php if (isset($component)) { $__componentOriginalf6dac73e63bbf44706bb0ec50aef1094 = $component; } ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('delete', $label)): ?>
+                                <?php if (isset($component)) { $__componentOriginalf6dac73e63bbf44706bb0ec50aef1094 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalf6dac73e63bbf44706bb0ec50aef1094 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.link-red','data' => ['route' => ''.e(route('labels.destroy', $label->id)).'','confirm' => ''.e(__('views.actions.delete_confirm')).'','text' => ''.e(__('views.actions.delete')).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('link-red'); ?>
@@ -66,7 +67,9 @@
 <?php $component = $__componentOriginalf6dac73e63bbf44706bb0ec50aef1094; ?>
 <?php unset($__componentOriginalf6dac73e63bbf44706bb0ec50aef1094); ?>
 <?php endif; ?>
-                            <?php if (isset($component)) { $__componentOriginal5daea5316faef6d36271d46477571114 = $component; } ?>
+                            <?php endif; ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('update', $label)): ?>
+                                <?php if (isset($component)) { $__componentOriginal5daea5316faef6d36271d46477571114 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal5daea5316faef6d36271d46477571114 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.link-blue','data' => ['route' => ''.e(route('labels.edit', $label->id)).'','text' => ''.e(__('views.actions.edit')).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('link-blue'); ?>
@@ -86,6 +89,7 @@
 <?php $component = $__componentOriginal5daea5316faef6d36271d46477571114; ?>
 <?php unset($__componentOriginal5daea5316faef6d36271d46477571114); ?>
 <?php endif; ?>
+                            <?php endif; ?>
                         </td>
                     <?php endif; ?>
                 </tr>

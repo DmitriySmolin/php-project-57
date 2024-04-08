@@ -14,9 +14,6 @@ install:
 	composer install
 	npm ci
 
-fix-fakerphp:
-	cp -f src/Person.php vendor/fakerphp/faker/src/Faker/Provider/ru_RU/Person.php
-
 key:
 	php artisan key:gen --ansi
 

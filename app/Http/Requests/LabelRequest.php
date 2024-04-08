@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreTaskStatusRequest extends FormRequest
+class LabelRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,8 @@ class StoreTaskStatusRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:255', Rule::unique('task_statuses', 'name')->ignore($this->task_status)],
+            'name' => ['required', 'max:255', Rule::unique('labels', 'name')->ignore($this->label)],
+            'description' => ['nullable', 'max:500'],
         ];
     }
 
@@ -36,6 +37,8 @@ class StoreTaskStatusRequest extends FormRequest
     {
         return [
             'name.unique' => __('validation.unique_name'),
+            'name.max' => __('validation.max.string_f'),
+            'description.max' => __('validation.max.string_n'),
         ];
     }
 
@@ -47,7 +50,7 @@ class StoreTaskStatusRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'name' => __('validation.attributes.status'),
+            'name' => __('validation.attributes.labels'),
         ];
     }
 }

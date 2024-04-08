@@ -24,12 +24,12 @@
                 {{ Form::close() }}
             </div>
 
-            @auth
+            @can('create', App\Models\Task::class)
                 <div class="ml-auto">
                     <x-link-button route="{{ route('tasks.create') }}" text="{{ __('views.task.index.create_task') }}"
                                    class="ml-2"/>
                 </div>
-            @endauth
+            @endcan
         </div>
 
         <table class="mt-4">
@@ -64,8 +64,10 @@
                                             confirm="{{ __('views.actions.delete_confirm') }}"
                                             text="{{ __('views.actions.delete') }}"/>
                             @endcan
-                            <x-link-blue route="{{ route('tasks.edit', $task->id) }}"
-                                         text="{{ __('views.actions.edit') }}"/>
+                            @can('update', $task)
+                                <x-link-blue route="{{ route('tasks.edit', $task->id) }}"
+                                             text="{{ __('views.actions.edit') }}"/>
+                            @endcan
                         </td>
                     @endauth
                 </tr>

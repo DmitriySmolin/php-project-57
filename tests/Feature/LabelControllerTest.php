@@ -10,14 +10,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class LabelControllerTest extends TestCase
 {
-    use RefreshDatabase;
-
     private User $user;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->user = User::factory()->create();
+        Label::factory(5)->create();
     }
 
     public function testIndex(): void
@@ -102,7 +101,7 @@ class LabelControllerTest extends TestCase
         $label = Label::factory()->hasTasks(1)->create();
         $response = $this->actingAs($this->user)->delete(route('labels.destroy', $label));
         $response->assertRedirect();
-        $this->assertDatabaseHas('labels', ['id' => $label->id]);
+        $this->assertModelExists($label);
     }
 
     public function testDeleteSuccessful(): void
@@ -111,6 +110,6 @@ class LabelControllerTest extends TestCase
         $response = $this->actingAs($this->user)->delete(route('labels.destroy', $label));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-        $this->assertDatabaseMissing('labels', ['id' => $label->id]);
+        $this->assertModelMissing($label);
     }
 }

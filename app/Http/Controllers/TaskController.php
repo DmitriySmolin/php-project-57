@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTaskRequest;
+use App\Http\Requests\TaskRequest;
 use App\Models\Label;
 use App\Models\Task;
 use App\Models\TaskStatus;
@@ -44,8 +44,12 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTaskRequest $request)
+    public function store(TaskRequest $request)
     {
+        if ($request->hasFile('file')) {
+            return redirect()->back()->withErrors(['file' => 'Нельзя добавить файл']);
+        }
+
         $data = $request->validated();
         $task = Auth::user()->createdTasks()->make($data);
         $task->save();
@@ -79,7 +83,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreTaskRequest $request, Task $task)
+    public function update(TaskRequest $request, Task $task)
     {
         $data = $request->validated();
         $task->fill($data);
