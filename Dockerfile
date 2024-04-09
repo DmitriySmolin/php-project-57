@@ -18,7 +18,6 @@ WORKDIR /app
 
 COPY . .
 RUN composer install
-RUN php artisan key:generate
 RUN npm ci
 RUN npm run build
 
