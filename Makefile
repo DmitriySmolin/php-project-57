@@ -12,7 +12,7 @@ env-prepare:
 
 install:
 	composer install
-    php artisan key:generate
+    php artisan key:gen --ansi
 	npm ci
 
 key:
