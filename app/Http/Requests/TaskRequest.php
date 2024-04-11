@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Validation\Rule;
 
 class TaskRequest extends FormRequest
@@ -23,7 +24,11 @@ class TaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:255', 'string', Rule::unique('tasks', 'name')->ignore($this->task)],
+            'name' => ['required', 'max:255', function ($attribute, $value, $fail) {
+                if ($value instanceof UploadedFile) {
+                    $fail($attribute . ' must be a string, not a file.');
+                }
+            }, Rule::unique('tasks', 'name')->ignore($this->task)],
             'description' => 'string|max:500|nullable',
             'status_id' => 'required|exists:task_statuses,id',
             'assigned_to_id' => 'nullable|exists:users,id',

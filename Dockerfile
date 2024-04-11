@@ -18,6 +18,7 @@ WORKDIR /app
 
 COPY . .
 RUN composer install
+RUN make fix-fakerphp
 RUN npm ci
 RUN npm run build
 

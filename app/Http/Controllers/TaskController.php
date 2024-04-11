@@ -46,10 +46,6 @@ class TaskController extends Controller
      */
     public function store(TaskRequest $request)
     {
-        if ($request->hasFile('file')) {
-            return redirect()->back()->withErrors(['file' => 'Нельзя добавить файл']);
-        }
-
         $data = $request->validated();
         $task = Auth::user()->createdTasks()->make($data);
         $task->save();

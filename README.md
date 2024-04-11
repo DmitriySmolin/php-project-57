@@ -25,4 +25,4 @@ $ make setup
 ```
 
 ## Deploy
-## [task-manager](https://task-manager-wlnd.onrender.com/) 
+## [task-manager](https://hexlet-task-manager-4bzh.onrender.com/) 
