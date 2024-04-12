@@ -70,10 +70,14 @@ class TaskControllerTest extends TestCase
         $this->assertDatabaseMissing('tasks', $data);
     }
 
+    /**
+     * @throws \JsonException
+     */
     public function testStoreSuccessful(): void
     {
         $data = Task::factory()->make()->only('name', 'status_id');
-        $response = $this->actingAs($this->user)->post(route('tasks.store', $data));
+        $data['description'] = null; // Assuming 'description' is nullable
+        $response = $this->actingAs($this->user)->post(route('tasks.store'), $data);
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
         $this->assertDatabaseHas('tasks', $data);
@@ -92,6 +96,7 @@ class TaskControllerTest extends TestCase
     {
         $task = Task::factory()->create();
         $data = Task::factory()->make()->only('name', 'status_id');
+        $data['description'] = null; // Assuming 'description' is nullable
         $response = $this->actingAs($this->user)->patch(route('tasks.update', $task), $data);
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();

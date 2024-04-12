@@ -24,9 +24,9 @@ class TaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:255',
-            'labels' => 'nullable|array', Rule::unique('tasks', 'name')->ignore($this->task)],
-            'description' => 'string|max:500|nullable',
+            'name' => ['required', 'max:255', Rule::unique('tasks', 'name')->ignore($this->task)],
+            'labels' => ['nullable', 'array'], // Corrected the construction
+            'description' => 'string|nullable|max:500',
             'status_id' => 'required|exists:task_statuses,id',
             'assigned_to_id' => 'nullable|exists:users,id',
         ];
